@@ -1,0 +1,343 @@
+{\rtf1\ansi\ansicpg1252\uc1\deff0
+{\fonttbl{\f0\fnil\fcharset1252\fprq2 Source Code Pro;}}
+{\colortbl;\red0\green0\blue0;}
+\paperw12240\paperh15840\margl1800\margr1800\margt1440\margb1440\fet2\ftnbj\aenddoc
+\pgnrestart\pgnstarts0
+\pard\plain \fi0\ltrch\loch {\f0\fs24\b0\i0 What exactly is Sass, how does Compass relate to it, and how do both of them relate to CSS?}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ### History Lesson (why Pre-Processor for CSS)}
+\par\plain {\f0\fs24\b0\i0 The issue with CSS, in my view, is that it can be a pain to work with. It's nicer to divide them into logical (or not so\loch\af0\hich\af0\dbch\af0\uc1\u8230\'85) modules than to work on a single huge file, but you should strive to minimise the number of HTTP-calls for performance reasons. If you have the same colour in several places and you want to tweak it, you have to find each of those places, and stuff such as that.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 That's where pre-processors come in. There's three large ones [Sass](http://sass-lang.com/), [Less](http://lesscss.org/) and [Stylus](http://learnboost.github.io/stylus/), where Less has it going for it that the ubiquitous Bootstrap is built in it, and Sass is probably the most versatile and most powerful of the three, which is why I prefer Sass. Also, it's the closest to CSS-syntax, and it's what I started with, so those two probably play a part.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 (As a sidenote, Stylus is using omitting braces and semi-colons as an advantage to Stylus, which I imagine it is to some. I don't like it, and I don't like CoffeeScript for the same reason.)}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 **What can we do with Sass that we cannot do with CSS?**}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 Simple answer? Not a single thing, because the end result is CSS. When using any pre-processors, always keep in mind when you're feeling particularly clever what it will look like once it's processed. You do not want to be responsible for the horrific specificity mess that comes from nesting things ten levels, trust me on this one. Remember, friends don't let friends bloat CSS.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 So now over to the more complex answer, covering five points.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 #### Variables}
+\par\plain {\f0\fs24\b0\i0 To declare a variable in SCSS, just write `$variable-name: value;` where ever you need it, and it can then be used as `$variable-name` somewhere else, assuming it has been declared *before*.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 The naming doesn't matter, but since CSS is a [hyphen-delimited syntax](http://csswizardry.com/2010/12/css-camel-case-seriously-sucks/)(check out that rant\loch\af0\hich\af0\dbch\af0\uc1\u8230\'85), using hypens in your variable names is probably a good idea.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 #### Colour functions}
+\par\plain {\f0\fs24\b0\i0 Your main colour for your links is `#BADA55` (thank you Chris Coyier!), and you figure that they should be somewhat darker when you hover over them, and thus you open your trusty image program such as Gimp or Photoshop, using those nifty little sliders to get a good colour. It's used in a few places and all is well, until one day you decide that you'd like to make the `:hover`/`:focus` states *lighter* instead.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 Queue [Sass colour functions](http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html).}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 $colour: #BADA55;}
+\par\plain {\f0\fs24\b0\i0 $darker-colour: darken($colour, 15); // 15% darker}
+\par\plain {\f0\fs24\b0\i0 $lighter-colour: lighten($colour, 15); // 15% lighter}
+\par\plain {\f0\fs24\b0\i0 $ie-filter-colour: ie-hex-str($colour); // A format that IE filters understand}
+\par\plain {\f0\fs24\b0\i0 $transparent-colour: rgba($colour, 0.15); // 0.15 opacity}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 #### Nesting}
+\par\plain {\f0\fs24\b0\i0 Remember the CSS Modernizr example from above? Wouldn't it be nice if you could have a more visible way to show the kind of relationship that you get with children etc?}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 Here's the Sassy way:}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 button \{}
+\par\plain {\f0\fs24\b0\i0     @include background-image(linear-gradient(top, #555, #333));}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0     .no-cssgradients & \{}
+\par\plain {\f0\fs24\b0\i0         background: url('backup-image.png');}
+\par\plain {\f0\fs24\b0\i0     \}}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 That gets compiled to the same example above.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 Another example: Setting states on links.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 $link-color: #BADA55;}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 a \{}
+\par\plain {\f0\fs24\b0\i0     color: $link-color; // This applies to all a-elements}
+\par\plain {\f0\fs24\b0\i0     text-decoration: none;}
+\par\plain {\f0\fs24\b0\i0     border-bottom: 1px solid; // Replacing the text-decoration with a border-bottom}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0     &:visited \{}
+\par\plain {\f0\fs24\b0\i0         border-bottom: 0 none; // Removes the border-bottom on visited links}
+\par\plain {\f0\fs24\b0\i0     \}}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0     &:hover,}
+\par\plain {\f0\fs24\b0\i0     &:focus \{}
+\par\plain {\f0\fs24\b0\i0         // Applies to links that are focused, or hovered over}
+\par\plain {\f0\fs24\b0\i0         color: darken($link-color, 15);}
+\par\plain {\f0\fs24\b0\i0         border-bottom: 1px solid;}
+\par\plain {\f0\fs24\b0\i0     \}}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0     &:active \{}
+\par\plain {\f0\fs24\b0\i0         // Links that have been clicked, but not yet moved to their target}
+\par\plain {\f0\fs24\b0\i0         color: red;}
+\par\plain {\f0\fs24\b0\i0         border-bottom: 1px solid;}
+\par\plain {\f0\fs24\b0\i0     \}}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 This translates into the following:}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 a \{}
+\par\plain {\f0\fs24\b0\i0     color: #BADA55;}
+\par\plain {\f0\fs24\b0\i0     text-decoration: none;}
+\par\plain {\f0\fs24\b0\i0     border-bottom: 1px solid;}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 a:visited \{}
+\par\plain {\f0\fs24\b0\i0     border-bottom: 0 none;}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 a:hover,}
+\par\plain {\f0\fs24\b0\i0 a:focus \{}
+\par\plain {\f0\fs24\b0\i0     color: #97ba28;}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 a:active \{}
+\par\plain {\f0\fs24\b0\i0     color: red;}
+\par\plain {\f0\fs24\b0\i0     border-bottom: 1px solid;}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 You can even nest CSS rules, like so:}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 nav \{}
+\par\plain {\f0\fs24\b0\i0     font \{}
+\par\plain {\f0\fs24\b0\i0         family: serif;}
+\par\plain {\f0\fs24\b0\i0         weight: bold;}
+\par\plain {\f0\fs24\b0\i0         variant: small-caps;}
+\par\plain {\f0\fs24\b0\i0     \}}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 Which compiles to:}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 nav \{}
+\par\plain {\f0\fs24\b0\i0     font-family: serif;}
+\par\plain {\f0\fs24\b0\i0     font-weight: bold;}
+\par\plain {\f0\fs24\b0\i0     font-variant: small-caps;}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 #### Modular Development}
+\par\plain {\f0\fs24\b0\i0 I want to develop in smaller modules (though I admit I'm still working on perfecting what is a good flow\loch\af0\hich\af0\dbch\af0\uc1\u8230\'85), but as I publish it it needs to be concatenated into a single file, and preferrably also be minified. In Sass, the second part is handled through a flag on the command (to simplify it), and the first is dealt with through imports.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 Files that are named with an underscore as the first character will not be compiled, they are referred to as "partials" that can be imported into any other Sass file (including other partials). Assume we have a file which handles the `nav` styles (say `_nav.scss`), and another file that is the actual site CSS, say `styles.scss`.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 The `styles.scss` file can look something like the following:}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 @import "compass"; // This imports the gem compass}
+\par\plain {\f0\fs24\b0\i0 @import "nav"; // This imports a file named _nav.scss in the same folder}
+\par\plain {\f0\fs24\b0\i0 // You can import files relative to the file, so assuming we have the _nav.scss in a subfolder called partials:}
+\par\plain {\f0\fs24\b0\i0 @import "partials/nav";}
+\par\plain {\f0\fs24\b0\i0 @import url('/css/header.css'); //Using an URL means CSS, obviously}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 #### Extension and mixins}
+\par\plain {\f0\fs24\b0\i0 Let's start with mixins. You can sort of think of them like functions that are included into selectors. For an example, the `cite-style` mixin from [Typeplate](https://github.com/typeplate/typeplate.github.io):}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 // Citation Mixin for Custom Styling}
+\par\plain {\f0\fs24\b0\i0 @mixin cite-style($display, $text-align, $font-size) \{}
+\par\plain {\f0\fs24\b0\i0     display: $display;}
+\par\plain {\f0\fs24\b0\i0     font-size: $font-size;}
+\par\plain {\f0\fs24\b0\i0     text-align: $text-align;}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 That could be used to, for instance, differentiate between different kind of blockquotes and the figcaption related to it. You'd call it with three arguments (display, text-align and font-size), which are probably fairly straightforward to figure out what they do, and it's used like the following:}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 p \{}
+\par\plain {\f0\fs24\b0\i0     @include cite-style(inline, right, 0.75em);}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 Which compiles to}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 p \{}
+\par\plain {\f0\fs24\b0\i0     display: inline;}
+\par\plain {\f0\fs24\b0\i0     font-size: 0.75em;}
+\par\plain {\f0\fs24\b0\i0     text-align: right;}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 In a sense, extension can be compared to a argument-less mixin, though it's better to use extensions as much as you can, because it compiles differently. If you have three elements using the above `cite-style`, each of them will have that compiled into them. Of course, as you're GZIP-ing it, that matters a touch less, but I find it untidy.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 Extensions, however, work as follows:}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 %some-class \{}
+\par\plain {\f0\fs24\b0\i0     // This will not actually be compiled unless extended, the % that is in the}
+\par\plain {\f0\fs24\b0\i0     // beginning of the name makes it "anonymous"}
+\par\plain {\f0\fs24\b0\i0     font-size: 1.2em;}
+\par\plain {\f0\fs24\b0\i0     color: #BADA55;}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 .some-class \{}
+\par\plain {\f0\fs24\b0\i0     @extend %some-class;}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 .slightly-different-class \{}
+\par\plain {\f0\fs24\b0\i0     @extend %some-class;}
+\par\plain {\f0\fs24\b0\i0     border-bottom: 1px solid;}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 These are then compiled into the following construction:}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 .some-class,}
+\par\plain {\f0\fs24\b0\i0 .slightly-different-class \{}
+\par\plain {\f0\fs24\b0\i0     font-size: 1.2em;}
+\par\plain {\f0\fs24\b0\i0     color: #BADA55;}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 .slightly-different-class \{}
+\par\plain {\f0\fs24\b0\i0     border-bottom: 1px solid;}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 **A word of caution, however**: these combined selectors appear in the compiled CSS at the first mentioning of the class that is extended, which may lead to issues with specificity. You also cannot `@extend` into a media-query.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ### Over to Compass}
+\par\plain {\f0\fs24\b0\i0 Per [its page](http://compass-style.org/) Compass is an <q>open-source CSS Authoring Framework</q>. It can be very opinionated (it includes a reset and a grid, among other things), but I use it to speed up development, in particularly through using the CSS3 mixins, the automated base64 encoding, the magic sprites and the nice config file which allows me to watch files with ease (less important with a Grunt workflow, admittedly, so the final bit will be covered under the Grunt task).}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 To use the framework you need to import it, or a subset of it, before you use it, like so:}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 @import "compass";}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 That will import three large modules, namely `CSS3`, `Typography`(not used by me very often) and `Utilities`, but if you want to use their reset or layout module, those need to be imported separately. If you only want one of the modules (or a subset of the module), you can instead use `@import "compass/css3";`.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 If you use other Sass or Compass plugins, they are imported similarly, where I am a big fan of `breakpoint`, a gem to ease up mediaqueries.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 #### CSS3 mixins}
+\par\plain {\f0\fs24\b0\i0 There are quite a few different ways of dealing with the prefixes, and my preference goes to using Compass mixins and let Compass deal with implementing it. Yes, it means that if I abandon my project today and never touch it again, there will be some unecessary prefixes cluttering up the CSS file. On the other hand, it's not using JavaScript to accomplish the same thing, and to me a touch more clutter is better than a touch more JavaScript.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 They use a similar syntax to the actual rules, so that you learn that rather than a make-believe syntax. The one thing I do wish is that it would log a warning or some-such when you're using a mixin that is superfluous due to browsers having caught up, but that is more "would be nice" than a dealbreaker.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 The [documentation](http://compass-style.org/reference/compass/) covers exact details on the different mixins and how to use them.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 #### Automated base64 encoding and linking}
+\par\plain {\f0\fs24\b0\i0 Assuming that you have configurated the folders correctly (so that Compass knows where to look), it can link to images and fonts, as well as embedding them as base64.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 The differences is one in syntax, where for images you use `image-url` to create a link to the asset (relative or not depends on configuration) and `inline-image` to embed it. Dealing with how to do the same for fonts is a touch out of the scope of this tutorial, but [this index of helpers](http://compass-style.org/reference/compass/helpers/) should be able to point you in the right direction.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 #### Sprites}
+\par\plain {\f0\fs24\b0\i0 This has to be one of my absolute favourite functionalities of Compass. Assume that you're using various icons throughout your design, icons that you for one reason or another either can not or would prefer not to use as a font file. This conceit requires each icon to be the same size, same filetype and use a consistent naming scheme, though in particular the last two feels like it should always be the case.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 Given the following scheme (brackets denoting words that can be replaced easily), placed in the imagesDir, you can import the files and use them in your sheet:}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 <pre>}
+\par\plain {\f0\fs24\b0\i0     [icon-set]/[new].png}
+\par\plain {\f0\fs24\b0\i0     [icon-set]/[save].png}
+\par\plain {\f0\fs24\b0\i0     [icon-set]/[delete].png}
+\par\plain {\f0\fs24\b0\i0 </pre>}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 @import "[icon-set]/*.png";}
+\par\plain {\f0\fs24\b0\i0 @include "all-[icon-set]-sprites";}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 This creates a file named `[icon-set]-[bunch of characters].png` in either your images folder or your generated images folder (if defined), and a series of classes along the lines of `.icon-set-image-name`, so in the first example, we'd have classes including `icon-set-new`. Use that class on any element that should have it, or extend it into something else. For more details on spriting, [this tutorial](http://compass-style.org/help/tutorials/spriting/) has some very nice examples for so-called power users. Let's go with one more example from there to show the power of letting Compass deal with your sprites: selector control.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 Assume you have a toolbar with icons:}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 // Files}
+\par\plain {\f0\fs24\b0\i0 icons}
+\par\plain {\f0\fs24\b0\i0     toolbar}
+\par\plain {\f0\fs24\b0\i0         - bold.png}
+\par\plain {\f0\fs24\b0\i0         - italic.png}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 // HTML}
+\par\plain {\f0\fs24\b0\i0 <div class="toolbar">}
+\par\plain {\f0\fs24\b0\i0     <ul>}
+\par\plain {\f0\fs24\b0\i0         <li><button class="bold">Bold</button></li>}
+\par\plain {\f0\fs24\b0\i0         <li><button class="italic">Italic</button></li>}
+\par\plain {\f0\fs24\b0\i0     </ul>}
+\par\plain {\f0\fs24\b0\i0 </div>}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 //SCSS}
+\par\plain {\f0\fs24\b0\i0 // Note how the set of icons are named after the last segment of the url}
+\par\plain {\f0\fs24\b0\i0 @import "icons/toolbar/*.png";}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 .toolbar \{}
+\par\plain {\f0\fs24\b0\i0     button \{}
+\par\plain {\f0\fs24\b0\i0         @extend %ir; // Your image-replacement style of choice}
+\par\plain {\f0\fs24\b0\i0     \}}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0     .bold \{}
+\par\plain {\f0\fs24\b0\i0         @include toolbar-sprite(bold)}
+\par\plain {\f0\fs24\b0\i0     \}}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0     .italic \{}
+\par\plain {\f0\fs24\b0\i0         @include toolbar-sprite(italic);}
+\par\plain {\f0\fs24\b0\i0     \}}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ### Playing the devil's advocate}
+\par\plain {\f0\fs24\b0\i0 Why wouldn't you want to use a pre-processor? After all, Sass is the absolutely best thing since sliced bread, as I've just finished telling you! There are a few issues with running it:}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 #### Learning curve}
+\par\plain {\f0\fs24\b0\i0 Especially if you come into a project half-way through, it takes a bit to understand the more clever solutions, such as using if-statements, loops and such. However, assuming you have someone to ask (say coworker or whomever started the project) it's not too complex, and when you're starting your own project for the first time you can just go with keeping the Sass to nesting, imports and variables, and you're already speeding up your workflow while using _almost_ pure CSS}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 #### Bloated output}
+\par\plain {\f0\fs24\b0\i0 I hate this claim, that using a pre-processor automatically creates bloat, because it's plainly not true. I think [Roy Tomeij](http://thesassway.com/articles/sass-doesnt-create-bad-code-bad-coders-do) said it best:}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 > It [Sass] creates too specific selectors due to nesting, huge sprites and they [people who don't like pre-processors] hate the way Sass enforces an architectural approach that doesn't work. And it's all true. If you're a poor developer. You know, one who would handcraft too specific selectors, 15MB sprites and doesn't know how to cleanly structure a project.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 #### Setup time}
+\par\plain {\f0\fs24\b0\i0 Yes, it takes some extra effort to set up the pre-processor, with Sass you need Ruby, with Less or Stylus you need NodeJS. What that means is that if you're employing someone to do frontend work that's not too comfortable around installing stuff, *set up their workspace for them*. Where I work, the new sellers and such gets a nice computer with everything necessary (including icons to server space) already installed. Me? I got a computer with an Ubuntu CD stuck on top of it and was told to knock myself out, more or less. Did I know how to install git, Ruby (for Sass), etc? Lolz nope! I learned, though =)}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ### Grunt task to compile Sass}
+\par\plain {\f0\fs24\b0\i0 The [Compass task](https://github.com/gruntjs/grunt-contrib-compass) is another of the core Grunt plugins. The options closely mimic those of Compass `config.rb` (though using `camelCase` rather than `snake_case`), and runs `compass compile` with the specified options.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 To install it, you should probably start with [making sure you have Sass and Compass](http://mariehogebrandt.se/articles/installing-sass-and-compass-on-ubuntu/), after which you can install the task itself: `npm install grunt-contrib-compass --save-dev`.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 // <%= yeoman.app %> uses the value of the variable yeoman.app}
+\par\plain {\f0\fs24\b0\i0 compass: \{}
+\par\plain {\f0\fs24\b0\i0     // These options are global}
+\par\plain {\f0\fs24\b0\i0     options: \{}
+\par\plain {\f0\fs24\b0\i0         sassDir: '<%= yeoman.app %>/styles', // Sassy files}
+\par\plain {\f0\fs24\b0\i0         cssDir: '.tmp/styles', // Folder it will be compiled to}
+\par\plain {\f0\fs24\b0\i0         imagesDir: '<%= yeoman.app %>/styles/images',}
+\par\plain {\f0\fs24\b0\i0         generatedImagesDir: '.tmp/styles/images/generated',}
+\par\plain {\f0\fs24\b0\i0         javascriptsDir: '<%= yeoman.app %>/scripts', // Where to put JS from extensions}
+\par\plain {\f0\fs24\b0\i0         fontsDir: '<%= yeoman.app %>/styles/fonts',}
+\par\plain {\f0\fs24\b0\i0         importPath: '<%= yeoman.app %>/bower_components', // Secondary place to import partials from}
+\par\plain {\f0\fs24\b0\i0         httpImagesPath: '/images',}
+\par\plain {\f0\fs24\b0\i0         httpGeneratedImagesPath: '/images/generated',}
+\par\plain {\f0\fs24\b0\i0         httpFontsPath: '/fonts',}
+\par\plain {\f0\fs24\b0\i0         relativeAssets: false,}
+\par\plain {\f0\fs24\b0\i0         // These are gems that need to be installed as well}
+\par\plain {\f0\fs24\b0\i0         require: [}
+\par\plain {\f0\fs24\b0\i0             'breakpoint'}
+\par\plain {\f0\fs24\b0\i0         ]}
+\par\plain {\f0\fs24\b0\i0     \},}
+\par\plain {\f0\fs24\b0\i0     dist: \{\},}
+\par\plain {\f0\fs24\b0\i0     server: \{}
+\par\plain {\f0\fs24\b0\i0         options: \{}
+\par\plain {\f0\fs24\b0\i0             // The file will have line numbers of where a specific CSS rule is coming from}
+\par\plain {\f0\fs24\b0\i0             debugInfo: true}
+\par\plain {\f0\fs24\b0\i0         \}}
+\par\plain {\f0\fs24\b0\i0     \}}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 **Happy Authoring!**}}

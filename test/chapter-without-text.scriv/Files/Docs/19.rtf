@@ -1,0 +1,28 @@
+{\rtf1\ansi\ansicpg1252\uc1\deff0
+{\fonttbl{\f0\fmodern\fcharset1252\fprq2 Courier New;}}
+{\colortbl;\red0\green0\blue0;\red0\green0\blue128;}
+\paperw12240\paperh15840\margl1800\margr1800\margt1440\margb1440\fet2\ftnbj\aenddoc
+\pgnrestart\pgnstarts0
+\pard\plain \fi720\ltrch\loch {\f0\fs24\b0\i0 When I first started with building web pages (don\hich\f0 \rquote \loch\f0 t judge me, it was at the end of frames and beginning of tables!), I obviously started in pure HTML, like I think most of us that\hich\f0 \rquote \loch\f0 s been doing these for some years did.}
+\par\plain {\f0\fs24\b0\i0 The next step was dynamic pages, I started with ASP, from there into C# and .NET, and around 2002 I landed with PHP, which has been my primary language (outside of forrays into Python and RoR) ever since.}
+\par\plain {\f0\fs24\b0\i0 So, why the history lesson? Because it amuses me how we\hich\f0 \rquote \loch\f0 ve now sort of come full-tilt, and static HTML-pages are once again seen as valid contestants, with tweaks to bring in the advantages of using any kind of dynamic languages.}
+\par\plain {\f0\fs24\b0\i0 ## Advantages to using pure HTML}
+\par\plain {\f0\fs24\b0\i0 * It\hich\f0 \rquote \loch\f0 s faster, no round-trips to the server}
+\par\plain {\f0\fs24\b0\i0 * It\hich\f0 \rquote \loch\f0 s safer, the only real vulnerabilities are XSS or misconfiguration/insecurities on the server}
+\par\plain {\f0\fs24\b0\i0 * It\hich\f0 \rquote \loch\f0 s portable, you just need \hich\f0 \ldblquote \loch\f0 a server\hich\f0 \rdblquote \loch\f0 ; if it can serve any language, it can serve HTML}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ## Disadvantages to using pure HTML}
+\par\plain {\f0\fs24\b0\i0 * It\hich\f0 \rquote \loch\f0 s, well, not dynamic. No logins, no dynamically rendered content}
+\par\plain {\f0\fs24\b0\i0 * It is per default not very DRY, as headers/footers/menus are not rendered but hardcoded}
+\par\plain {\f0\fs24\b0\i0 * It can be a maintainer\hich\f0 \rquote \loch\f0 s nightmare as you end up with more and more pages that use identical headers, etc.}
+\par\plain {\f0\fs24\b0\i0 * Forms can only be (unsafely) mailed to a recipient}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ## So, how to solve that?}
+\par\plain {\f0\fs24\b0\i0 The first point on the agenda is to consider whether or not using pure HTML is right for you. Of course, static does not necessarily mean completelly static as JavaScript can pull in content and widgets, and though the term DHTML is (thankfully) rarely used anymore, the concept itself - using CSS, JavaScript and HTML to create effects - is very much live and kicking; you don\hich\f0 \rquote \loch\f0 t need PHP or another server side language to create hover effects or such.}
+\par\plain {\f0\fs24\b0\i0 To me, the two deal-breakers would be if you need to allow your users to have a more long-term storage of data (such as having a notion of \hich\f0 \ldblquote \loch\f0 user\hich\f0 \rdblquote \loch\f0  that stretches beyond individual visits), or you want your users to connect outside of e-mail and Facebook/Twitter/Github, especially if you want to reach a broader set of browsers/surfing habits.}
+\par\plain {\f0\fs24\b0\i0 The final solution is Static Site Generators(SSGs), which are programs that take pre-defined templates and build them together into a full site, drawing in assets, copying files, and similar things, depending on the generator. You can therefor define headers/footers/sidebars/any sitewide component, often using inheritance or similar things to limit the amount of markup that is repeated.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ## Examples of SSGs}
+\par\plain {\f0\fs24\b0\i0 There are SSGs in several different languages, where I have personally used only two (Mynt and Assemble), so the more detailed descriptions will be saved for them.Outside of those, we have [Jekyll](}{\field{\*\fldinst HYPERLINK "http://jekyllrb.com/"}{\fldrslt\f0\fs24\b0\i0 http://jekyllrb.com/}}{\f0\fs24\b0\i0 ), which is a Ruby gem using Liquid templates, [Wintersmith](}{\field{\*\fldinst HYPERLINK "http://wintersmith.io/"}{\fldrslt\f0\fs24\b0\i0 http://wintersmith.io/}}{\f0\fs24\b0\i0 ) (is that not a nice name?) built in NodeJS using Jade templates out of the box, and quite a few more.}
+\par\plain {\f0\fs24\b0\i0 ### Mynt}
+\par\plain {\f0\fs24\b0\i0 [Mynt](}{\field{\*\fldinst HYPERLINK "http://mynt.mirroredwhite.com/"}{\fldrslt\f0\fs24\b0\i0 http://mynt.mirroredwhite.com/}}{\f0\fs24\b0\i0 ) is a python-based  SSG, which uses }}

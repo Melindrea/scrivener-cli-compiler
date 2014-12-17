@@ -1,0 +1,20 @@
+{\rtf1\ansi\ansicpg1252\uc1\deff0
+{\fonttbl{\f0\fnil\fcharset1252\fprq2 Source Code Pro;}}
+{\colortbl;\red0\green0\blue0;}
+\paperw12240\paperh15840\margl1800\margr1800\margt1440\margb1440\fet2\ftnbj\aenddoc
+\pgnrestart\pgnstarts0
+\pard\plain \fi720\ltrch\loch {\f0\fs24\b0\i0 ## .gitignore and the big \hich\f0 \ldblquote \loch\f0 whoops!\hich\f0 \rdblquote \loch\f0 }
+\par\plain {\f0\fs24\b0\i0 I\hich\f0 \rquote \loch\f0 ve been there (several times) and I\hich\f0 \rquote \loch\f0 m not fully certain I believe you if you claim you haven\hich\f0 \rquote \loch\f0 t. You forgot to initiate a `.gitignore` file before your first commit, or you changed your mind on where something that should be ignored was stored, or you missed something in the pattern leading to your entire set of bower-components ending up being part of your repository. Did I mention *whoops!*?}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 **Warning, following these instructions may lead to the loss of the files you are wanting to ignore, so keep a backup of them, or in some other way ensure that you will get them back!**}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 Before you do anything, make sure you ***commit your changes***, or they are likely to get lost too. You have been properly warned, so let\hich\f0 \rquote \loch\f0 s see what needs to/can be done. Also, make sure you have fixed and commited your proper `.gitignore` file before starting, or it\hich\f0 \rquote \loch\f0 s going to be a tad inconvenient.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 git rm -r --cached . # This recursively removes everything from the commits}
+\par\plain {\f0\fs24\b0\i0 git add --all # adds/deletes files}
+\par\plain {\f0\fs24\b0\i0 git commit -m "Working .gitignore" # commits, using the given message}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 And if you didn\hich\f0 \rquote \loch\f0 t know, you can replace `.` with a particular file, or a file pattern.}
+\par\plain \f0\fs24\b0\i0}

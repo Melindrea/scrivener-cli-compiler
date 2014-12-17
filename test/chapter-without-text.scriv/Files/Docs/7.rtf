@@ -1,0 +1,58 @@
+{\rtf1\ansi\ansicpg1252\uc1\deff0
+{\fonttbl{\f0\fnil\fcharset1252\fprq2 Source Code Pro;}}
+{\colortbl;\red0\green0\blue0;}
+\paperw12240\paperh15840\margl1800\margr1800\margt1440\margb1440\fet2\ftnbj\aenddoc
+\pgnrestart\pgnstarts0
+\pard\plain \fi0\ltrch\loch {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0     grunt.registerTask('js', [}
+\par\plain {\f0\fs24\b0\i0         'newer:jsvalidate',}
+\par\plain {\f0\fs24\b0\i0         'newer:jshint',}
+\par\plain {\f0\fs24\b0\i0         'modernizr'}
+\par\plain {\f0\fs24\b0\i0     ]);}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 The `js` task consists of three different tasks: `jsvalidate`, `jshint` and `modernizr`.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ### JSValidate}
+\par\plain {\f0\fs24\b0\i0 [JSValidate](https://github.com/ariya/grunt-jsvalidate) is a task intended to supplement JSHint. It's fast and checks the source code (including the minified/concatenated files) for syntax errors, as a preliminary check before the files are hinted.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 `npm install grunt-jsvalidate --save-dev`}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ### JSHint}
+\par\plain {\f0\fs24\b0\i0 Per [their homepage](http://jshint.com/), JSHint is a <q>tool that helps to detect errors and potential problems in your JavaScript code</q>. It is a less opinionated clone of [JSLint](http://www.jslint.com/), in particular in that it allows you to set more options. The global options are set in the [`.jshintrc` file](https://github.com/Melindrea/flat-build/blob/master/.jshintrc), and you can also set options in individual files using their [inline configuration](http://jshint.com/docs/config/). The [default mocha spec file](https://github.com/Melindrea/flat-build/blob/master/test/spec/test.js) uses the two globals `describe` and `it`, as an example.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 The task itself is installed using one of the [core plugins](https://github.com/gruntjs/grunt-contrib-jshint), `npm install grunt-contrib-jshint --save-dev`, which is fairly straight forward. I use it to lint the `Gruntfile.js`, all under-development `*.js`-files, any tasks, and the mocha test specifications.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 It is ran automatically, using watch, every time either of those files change, but as I also use the `newer` task, only the one(s) that's actually changed gets linted.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ### Modernizr}
+\par\plain \f0\fs24\b0\i0
+\par\pard\plain \fi0\ltrch\loch {\f0\fs24\b0\i0 This has to be one of my absolute favourite tasks, and I can't say how thrilled I am that it's been been pulled into the Modernizr organization proper, and that it's now used in the default Yeoman webapp generator, because it absolutely rocks!}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 So, what is Modernizr? It's a [feature detection library](http://modernizr.com/), which adds classes to the `html` element, allowing you to do backup plans in both JavaScript and CSS if a particular feature isn't available.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 For instance, imagine that your logo is a nice SVG image. If SVG isn't supported by the viewing browser, your backup is a PNG file. Using Modernizr, the code is fairly simple:}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0     if (!Modernizr.svg) \{}
+\par\plain {\f0\fs24\b0\i0         $('.brand img').attr('src', '/images/logo.png');}
+\par\plain {\f0\fs24\b0\i0     \}}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 Or maybe you're using CSS Gradients on some elements, but not all browsers can handle that, so then you write something along these lines:}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 button \{}
+\par\plain {\f0\fs24\b0\i0     background-image: linear-gradient(top, #555, #333);}
+\par\plain {\f0\fs24\b0\i0     /* Technically you're probably likelier to write it something like this,}
+\par\plain {\f0\fs24\b0\i0     since you're following my tutorial and I do Compass: */}
+\par\plain {\f0\fs24\b0\i0     @include background-image(linear-gradient(top, #555, #333));}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain {\f0\fs24\b0\i0 .no-cssgradients button \{}
+\par\plain {\f0\fs24\b0\i0     background: url('backup-image.png');}
+\par\plain {\f0\fs24\b0\i0 \}}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 Seeing the brilliance of Modernizr yet? Of course you do, you're reading this, so clearly you're quite bright. Now, there is one big issue with Modernizr, where *big* is the operative word. Okay, not that big, the full library is 50.1kB, but it has a lot of things that you'll probably not need, so it'd be better to get a file built for that particular project.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 That's where [grunt-modernizr](https://github.com/Modernizr/grunt-modernizr) comes into play: `npm install grunt-modernizr --save-dev`. It goes through the specified files (JavaScript, CSS, SCSS) and builds a minified (if you so wish) file with just the tests that actually show up in any of those files. My Modernizr file clocks out at 7kb which is a nice improvement. Of course, then it gets built into the head script together with a few others on build, to save HTTP-requests.}}

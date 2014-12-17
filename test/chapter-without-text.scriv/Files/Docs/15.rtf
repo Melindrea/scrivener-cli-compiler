@@ -1,0 +1,304 @@
+{\rtf1\ansi\ansicpg1252\uc1\deff0
+{\fonttbl{\f0\fnil\fcharset1252\fprq2 Sans Serif;}}
+{\colortbl;\red0\green0\blue0;}
+\paperw12240\paperh15840\margl1800\margr1800\margt1440\margb1440\fet2\ftnbj\aenddoc
+\pgnrestart\pgnstarts0
+\pard\plain \fi0\ltrch\loch {\f0\fs18 MAIN MENU}
+\par\plain {\f0\fs18 BLOG}
+\par\plain {\f0\fs18 ABOUT}
+\par\plain {\f0\fs18 CONTACT US}
+\par\plain {\f0\fs18 FORUM}
+\par\plain {\f0\fs18 RSS/FEED}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18  }
+\par\plain {\f0\fs18 Linux FAQ / Howtos}
+\par\plain {\f0\fs18 Linux: Install pip Client To Install Python Packages}
+\par\plain {\f0\fs18 by NIXCRAFT on OCTOBER 28, 2012 \loch\af0\hich\af0\dbch\af0\uc1\u183\'B7 1 COMMENT\u183\'B7 LAST UPDATED OCTOBER 28, 2012}
+\par\plain {\f0\fs18 in CENTOS, DEBIAN / UBUNTU, PYTHON, REDHAT AND FRIENDS}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 I would like to install python packages using the pip command which is an easy_install command replacement. How do I install pip comamnd under RHEL / CentOS / Debian / Ubuntu Linux server systems?}
+\par\plain \f0\fs18
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Tutorial details\tab }
+\par\plain {\f0\fs18 Difficulty\tab Intermediate (rss)}
+\par\plain {\f0\fs18 Root privileges\tab Yes / No}
+\par\plain {\f0\fs18 Requirements\tab Python, gcc, python developer tools}
+\par\plain {\f0\fs18 Estimated completion time\tab N/A}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 The pip command is a tool for installing and managing Python packages, such as those found in the Python Package Index. It's a replacement for easy_install. pip is very useful for web development as well as for sys-admins who manages cloud computing based resources created Openstack, Rackspace, AWS, Google and other cloud computing service providers. The pip command can be installed in two different methods:}
+\par\plain {\f0\fs18 Method #1: pip for all users with root privileges required. It is recommended that you use package manager to install the pip.}
+\par\plain {\f0\fs18 Method #2: pip for a single user with no root privileges required. It is recommended that you use virtualenv script, which create isolated Python environments in your $HOME directory.}
+\par\plain {\f0\fs18 WARNING! Only use any one of the following method to install pip. Do not install pip using both methods.}
+\par\plain {\f0\fs18 Method #1: Install pip for all users}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 The pip command is not installed by default. You need to install it as per your distro.}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 RHEL / CentOS / Fedora Linux installation}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 First, turn on EPEL repo for RHEL / CentOS Linux. Next, type the following yum command under RHEL / CentOS / Fedora Linux to install python-pip package:}
+\par\plain {\f0\fs18 # yum -y install python-pip}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Sample outputs:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Loaded plugins: product-id, refresh-packagekit, rhnplugin, security,}
+\par\plain {\f0\fs18               : subscription-manager}
+\par\plain {\f0\fs18 Updating certificate-based repositories.}
+\par\plain {\f0\fs18 Unable to read consumer identity}
+\par\plain {\f0\fs18 Setting up Install Process}
+\par\plain {\f0\fs18 Resolving Dependencies}
+\par\plain {\f0\fs18 --> Running transaction check}
+\par\plain {\f0\fs18 ---> Package python-pip.noarch 0:0.8-1.el6 will be installed}
+\par\plain {\f0\fs18 --> Processing Dependency: python-setuptools for package: python-pip-0.8-1.el6.noarch}
+\par\plain {\f0\fs18 --> Running transaction check}
+\par\plain {\f0\fs18 ---> Package python-setuptools.noarch 0:0.6.10-3.el6 will be installed}
+\par\plain {\f0\fs18 --> Finished Dependency Resolution}
+\par\plain {\f0\fs18 \~}
+\par\plain {\f0\fs18 Dependencies Resolved}
+\par\plain {\f0\fs18 \~}
+\par\plain {\f0\fs18 ================================================================================}
+\par\plain {\f0\fs18  Package             Arch     Version         Repository                   Size}
+\par\plain {\f0\fs18 ================================================================================}
+\par\plain {\f0\fs18 Installing:}
+\par\plain {\f0\fs18  python-pip          noarch   0.8-1.el6       epel                        178 k}
+\par\plain {\f0\fs18 Installing for dependencies:}
+\par\plain {\f0\fs18  python-setuptools   noarch   0.6.10-3.el6    rhel-x86_64-workstation-6   336 k}
+\par\plain {\f0\fs18 \~}
+\par\plain {\f0\fs18 Transaction Summary}
+\par\plain {\f0\fs18 ================================================================================}
+\par\plain {\f0\fs18 Install       2 Package(s)}
+\par\plain {\f0\fs18 \~}
+\par\plain {\f0\fs18 Total download size: 513 k}
+\par\plain {\f0\fs18 Installed size: 764 k}
+\par\plain {\f0\fs18 Is this ok [y/N]: y}
+\par\plain {\f0\fs18 Downloading Packages:}
+\par\plain {\f0\fs18 (1/2): python-pip-0.8-1.el6.noarch.rpm                   | 178 kB     00:01}
+\par\plain {\f0\fs18 (2/2): python-setuptools-0.6.10-3.el6.noarch.rpm         | 336 kB     00:00}
+\par\plain {\f0\fs18 --------------------------------------------------------------------------------}
+\par\plain {\f0\fs18 Total                                            63 kB/s | 513 kB     00:08}
+\par\plain {\f0\fs18 warning: rpmts_HdrFromFdno: Header V3 RSA/SHA256 Signature, key ID 0608b895: NOKEY}
+\par\plain {\f0\fs18 Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6}
+\par\plain {\f0\fs18 Importing GPG key 0x0608B895:}
+\par\plain {\f0\fs18  Userid : EPEL (6) <epel@fedoraproject.org>}
+\par\plain {\f0\fs18  Package: epel-release-6-7.noarch (installed)}
+\par\plain {\f0\fs18  From   : /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6}
+\par\plain {\f0\fs18 Is this ok [y/N]: y}
+\par\plain {\f0\fs18 Running rpm_check_debug}
+\par\plain {\f0\fs18 Running Transaction Test}
+\par\plain {\f0\fs18 Transaction Test Succeeded}
+\par\plain {\f0\fs18 Running Transaction}
+\par\plain {\f0\fs18 Warning: RPMDB altered outside of yum.}
+\par\plain {\f0\fs18   Installing : python-setuptools-0.6.10-3.el6.noarch                        1/2}
+\par\plain {\f0\fs18   Installing : python-pip-0.8-1.el6.noarch                                  2/2}
+\par\plain {\f0\fs18 Installed products updated.}
+\par\plain {\f0\fs18   Verifying  : python-setuptools-0.6.10-3.el6.noarch                        1/2}
+\par\plain {\f0\fs18   Verifying  : python-pip-0.8-1.el6.noarch                                  2/2}
+\par\plain {\f0\fs18 \~}
+\par\plain {\f0\fs18 Installed:}
+\par\plain {\f0\fs18   python-pip.noarch 0:0.8-1.el6}
+\par\plain {\f0\fs18 \~}
+\par\plain {\f0\fs18 Dependency Installed:}
+\par\plain {\f0\fs18   python-setuptools.noarch 0:0.6.10-3.el6}
+\par\plain {\f0\fs18 \~}
+\par\plain {\f0\fs18 Complete!}
+\par\plain {\f0\fs18 \~}
+\par\plain {\f0\fs18 Please note that name of the command is pyton-pip under RHEL and friends. I recommend that you add the following alias to your ~/.bashrc file, enter:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 \~}
+\par\plain {\f0\fs18 $ echo 'alias pip="/usr/bin/pip-python"' >> $HOME/.bashrc}
+\par\plain {\f0\fs18 $ . $HOME/.bashrc}
+\par\plain {\f0\fs18 \~}
+\par\plain {\f0\fs18 Debian / Ubuntu Linux installation}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Type the following apt-get command to install}
+\par\plain {\f0\fs18 # apt-get install python-pip}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 OR}
+\par\plain {\f0\fs18 $ sudo apt-get install python-pip}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Sample outputs:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Reading package lists... Done}
+\par\plain {\f0\fs18 Building dependency tree}
+\par\plain {\f0\fs18 Reading state information... Done}
+\par\plain {\f0\fs18 The following NEW packages will be installed:}
+\par\plain {\f0\fs18   python-pip}
+\par\plain {\f0\fs18 0 upgraded, 1 newly installed, 0 to remove and 14 not upgraded.}
+\par\plain {\f0\fs18 Need to get 67.8 kB of archives.}
+\par\plain {\f0\fs18 After this operation, 332 kB of additional disk space will be used.}
+\par\plain {\f0\fs18 Get:1 http://debian.osuosl.org/debian/ squeeze/main python-pip all 0.7.2-1 [67.8 kB]}
+\par\plain {\f0\fs18 Fetched 67.8 kB in 1s (40.4 kB/s)}
+\par\plain {\f0\fs18 Selecting previously deselected package python-pip.}
+\par\plain {\f0\fs18 (Reading database ... 274928 files and directories currently installed.)}
+\par\plain {\f0\fs18 Unpacking python-pip (from .../python-pip_0.7.2-1_all.deb) ...}
+\par\plain {\f0\fs18 Processing triggers for man-db ...}
+\par\plain {\f0\fs18 Setting up python-pip (0.7.2-1) ...}
+\par\plain {\f0\fs18 Processing triggers for python-support ...}
+\par\plain {\f0\fs18 Method #2: Install pip for a single user}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 This method does not require root access or modify your system Python installation. Type the following command:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 curl -O https://raw.github.com/pypa/virtualenv/master/virtualenv.py}
+\par\plain {\f0\fs18 Sample outputs:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current}
+\par\plain {\f0\fs18                                  Dload  Upload   Total   Spent    Left  Speed}
+\par\plain {\f0\fs18 100  107k  100  107k    0     0  35120      0  0:00:03  0:00:03 --:--:-- 49618}
+\par\plain {\f0\fs18 Create your own virtual environment called py_virtual:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 python virtualenv.py py_virtual}
+\par\plain {\f0\fs18 Sample outputs:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 New python executable in py_virtual/bin/python}
+\par\plain {\f0\fs18 Installing setuptools............................done.}
+\par\plain {\f0\fs18 Installing pip.....................done.}
+\par\plain {\f0\fs18 Activate your new virtual environment, run:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 . py_virtual/bin/activate}
+\par\plain {\f0\fs18 Sample outputs (note prompt changed):}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 (py_virtual)vivek@wks01:~$ }
+\par\plain {\f0\fs18 How do I use pip command?}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 To install new python package type:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 pip install packageName}
+\par\plain {\f0\fs18 To uninstall python package installed by pip type:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 pip uninstall packageName}
+\par\plain {\f0\fs18 To search python package type:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 pip search packageName}
+\par\plain {\f0\fs18 To see a list of all commands type:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 pip help}
+\par\plain {\f0\fs18 Sample outputs}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Usage: pip COMMAND [OPTIONS]}
+\par\plain {\f0\fs18  --version                    show program's version number and exit}
+\par\plain {\f0\fs18  -h, --help                   Show help}
+\par\plain {\f0\fs18  -v, --verbose                Give more output}
+\par\plain {\f0\fs18  -q, --quiet                  Give less output}
+\par\plain {\f0\fs18  --log              Log file where a complete (maximum verbosity) record will be kept}
+\par\plain {\f0\fs18  --proxy               Specify a proxy in the form user:passwd@proxy.server:port. Note that the user:password@ is optional and required only if you}
+\par\plain {\f0\fs18                               are behind an authenticated proxy. If you provide user@proxy.server:port then you will be prompted for a password.}
+\par\plain {\f0\fs18  --timeout           Set the socket timeout (default 15 seconds)}
+\par\plain {\f0\fs18  --exists-action }
+\par\plain {\f0\fs18                               Default action when a path already exists. Use this option more than one time to specify another action if a certain option is}
+\par\plain {\f0\fs18                               not available. Choices: (s)witch, (i)gnore, (w)ipe, (b)ackup}
+\par\plain {\f0\fs18 Commands available:}
+\par\plain {\f0\fs18   bundle: Create pybundles (archives containing multiple packages)}
+\par\plain {\f0\fs18   freeze: Output all currently installed packages (exact versions) to stdout}
+\par\plain {\f0\fs18   help: Show available commands}
+\par\plain {\f0\fs18   install: Install packages}
+\par\plain {\f0\fs18   search: Search PyPI}
+\par\plain {\f0\fs18   uninstall: Uninstall packages}
+\par\plain {\f0\fs18   unzip: Unzip individual packages}
+\par\plain {\f0\fs18   zip: Zip individual packages}
+\par\plain {\f0\fs18 Examples}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Search all openstack cloud releated tools:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 pip search openstack}
+\par\plain {\f0\fs18 Sample outputs:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 ftp-cloudfs               - FTP interface to Rackspace Cloud Files and OpenStack Swift}
+\par\plain {\f0\fs18 vaporize                  - A clean and consistent library for the Rackspace Cloud / OpenStack}
+\par\plain {\f0\fs18 openstack.nose_plugin     - openstack run_tests.py style output for nosetests}
+\par\plain {\f0\fs18 nova-adminclient          - client for administering OpenStack Nova}
+\par\plain {\f0\fs18 python-glanceclient       - Client library for OpenStack Image API}
+\par\plain {\f0\fs18 python-novaclient         - Client library for OpenStack Nova API.}
+\par\plain {\f0\fs18 python-quantumclient      - CLI and python client library for OpenStack Quantum}
+\par\plain {\f0\fs18 python-melangeclient      - Client library for OpenStack Melange API.}
+\par\plain {\f0\fs18 txAWS                     - Async library for EC2, OpenStack, and Eucalyptus}
+\par\plain {\f0\fs18 python-swiftclient        - Client Library for OpenStack Object Storage API}
+\par\plain {\f0\fs18 python-keystoneclient     - Client library for OpenStack Keystone API}
+\par\plain {\f0\fs18 django_openstack_auth     - A Django authentication backend for use with the OpenStack Keystone Identity backend.}
+\par\plain {\f0\fs18 python-cinderclient       - Client library for OpenStack Cinder API.}
+\par\plain {\f0\fs18 rackspace-auth-openstack  - Rackspace Auth Plugin for OpenStack Clients.}
+\par\plain {\f0\fs18 openstackocci             - OCCI interface for Openstack.}
+\par\plain {\f0\fs18 django-openstack          - A Django interface for OpenStack.}
+\par\plain {\f0\fs18 futuregrid_passwdstack    - Password Stack is a simple tool that allows normal users to reset their own password in the OpenStack Dashboard}
+\par\plain {\f0\fs18 cloudenvy                 - Fast provisioning on openstack clouds.}
+\par\plain {\f0\fs18 reddwarf                  - PaaS services for Openstack}
+\par\plain {\f0\fs18 python-openstackclient    - OpenStack command-line client}
+\par\plain {\f0\fs18 reviewday                 - Report generator for OpenStack code reviews.}
+\par\plain {\f0\fs18 horizon                   - The OpenStack Dashboard.}
+\par\plain {\f0\fs18 hpcloud-auth-openstack    - HP Cloud Auth Plugin for OpenStack Clients.}
+\par\plain {\f0\fs18 To install the OpenStack dashboard package called horizon, enter:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 pip install horizon}
+\par\plain {\f0\fs18 REFERENCES}
+\par\plain {\f0\fs18 PyPI - the Python Package Index.}
+\par\plain {\f0\fs18 Pip installer documentation and download from the official project site.}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18  }
+\par\plain \f0\fs18
+\par\plain \f0\fs18
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 If you would like to be kept up to date with our posts, you can follow us on Twitter, Facebook, Google+, or even by subscribing to our RSS Feed.}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Featured Articles:}
+\par\plain {\f0\fs18 30 Handy Bash Shell Aliases For Linux / Unix / Mac OS X}
+\par\plain {\f0\fs18 Top 30 Nmap Command Examples For Sys/Network Admins}
+\par\plain {\f0\fs18 25 PHP Security Best Practices For Sys Admins}
+\par\plain {\f0\fs18 20 Linux System Monitoring Tools Every SysAdmin Should Know}
+\par\plain {\f0\fs18 20 Linux Server Hardening Security Tips}
+\par\plain {\f0\fs18 Linux: 20 Iptables Examples For New SysAdmins}
+\par\plain {\f0\fs18 Top 20 OpenSSH Server Best Security Practices}
+\par\plain {\f0\fs18 Top 20 Nginx WebServer Best Security Practices}
+\par\plain {\f0\fs18 20 Examples: Make Sure Unix / Linux Configuration Files Are Free From Syntax Errors}
+\par\plain {\f0\fs18 15 Greatest Open Source Terminal Applications Of 2012 }
+\par\plain {\f0\fs18 My 10 UNIX Command Line Mistakes}
+\par\plain {\f0\fs18 Top 10 Open Source Web-Based Project Management Software}
+\par\plain {\f0\fs18 Top 5 Email Client For Linux, Mac OS X, and Windows Users}
+\par\plain {\f0\fs18 The Novice Guide To Buying A Linux Laptop}
+\par\plain {\f0\fs18 \{ 1 comment\loch\af0\hich\af0\dbch\af0\uc1\u8230\'85 read it below or add one \}}
+\par\plain {\f0\fs18 1 Some Guy March 13, 2013 at 2:11 am}
+\par\plain {\f0\fs18 The command in CentOS/RHEL is pip-python not python-pip as you have listed. Just FYI for anyone in the future that might read this}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 REPLY}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Leave a Comment}
+\par\plain {\f0\fs18 Name *}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 E-mail *}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Website}
+\par\plain \f0\fs18
+\par\plain \f0\fs18
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 You can use these HTML tags and attributes for your code and commands: <strong> <em> <ol> <li> <u> <ul> <kbd> <blockquote> <pre> <a href="" title="">}
+\par\plain {\f0\fs18  Notify me of followup comments via e-mail}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Security Question:}
+\par\plain {\f0\fs18 What is 10 + 5 ?}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Solve the simple math so we know that you are a human and not a bot.}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Tagged as: Amazon Cloud, apt-get command, Cloud, Cloud Computing, Openstack Cloud, pip command, python packages, Rackspace Cloud, web devlopment, yum command, Intermediate}
+\par\plain {\f0\fs18 PREVIOUS FAQ: Nginx Redirect (Rewrite) Old Domain To New Domain With HTTP 301}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 NEXT FAQ: Linux / Unix ssh-keygen: Create A Host Key File}
+\par\plain {\f0\fs18 GET FREE LINUX TIPS }
+\par\plain {\f0\fs18 Sign up for our newsletter to get howto & news }
+\par\plain {\f0\fs18 \~\~\~\~ }
+\par\plain \f0\fs18
+\par\plain {\f0\fs18  }
+\par\plain {\f0\fs18 Loading}
+\par\plain \f0\fs18
+\par\plain \f0\fs18
+\par\plain {\f0\fs18  }
+\par\plain {\f0\fs18 Related Faqs}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Rackspace Cloud Files: Upload Files Using Linux / Unix FTP Command}
+\par\plain {\f0\fs18 Rackspace Cloud Files: Upload Files Using Secure FTP (SFTP) Client [ sftp-cloudfs ]}
+\par\plain {\f0\fs18 Replicating Content Between USA, Japan (Asia) and UK (Europe) Webservers}
+\par\plain {\f0\fs18 Python pip: Upgrade Packages Command Under Unix or Linux}
+\par\plain {\f0\fs18 HowTo: Install Python idle IDE On Linux Operating System}
+\par\plain {\f0\fs18 HowTo: Install Python On Linux}
+\par\plain {\f0\fs18 SSH Into Google Cloud Compute Engine Instance Using Secure Shell Client}
+\par\plain {\f0\fs18 Linux / Unix Command To Optimize and Compress PNG Files In Bulk}
+\par\plain {\f0\fs18 Print a Web Page From a Shell Prompt}
+\par\plain {\f0\fs18 Linux Convert an MP3 File to WAV Format}
+\par\plain {\f0\fs18 \loch\af0\hich\af0\dbch\af0\uc1\u169\'A92006-2013 nixCraft. All rights reserved. Cannot be reproduced without written permission. }
+\par\plain {\f0\fs18 Privacy Policy | Terms of Service | Questions or Comments | Sitemap}}

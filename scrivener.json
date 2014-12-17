@@ -1,0 +1,14 @@
+{
+    "chapter-without-text": {
+        "depth": 2,
+        "path": "test",
+        "levels": [{
+            "text": false
+        }, {
+            "text": true,
+            "title": false,
+            "concat": true,
+            "divider": "SCENE ENDS"
+        }]
+    }
+}

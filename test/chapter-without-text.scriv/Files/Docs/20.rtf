@@ -1,0 +1,26 @@
+{\rtf1\ansi\ansicpg1252\uc1\deff0
+{\fonttbl{\f0\fnil\fcharset1252\fprq2 Courier New;}}
+{\colortbl;\red0\green0\blue0;\red0\green0\blue128;}
+\paperw12240\paperh15840\margl1800\margr1800\margt1440\margb1440\fet2\ftnbj\aenddoc
+\pgnrestart\pgnstarts0
+\pard\plain \fi720\ltrch\loch {\f0\fs24\b0\i0 Today I first encountered [Vagrant](http://www.vagrantup.com) through a yeoman generator of all things. I have but touched on it, but what I\hich\f0 \rquote \loch\f0 ve seen as of yet I like. }
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ## Installation}
+\par\plain {\f0\fs24\b0\i0 Before I look closer at what can be done with it, there\hich\f0 \rquote \loch\f0 s the quick \hich\f0 \ldblquote \loch\f0 gotcha\hich\f0 \rdblquote \loch\f0  that, if you are not careful, will, erh\loch\af0\hich\af0\dbch\af0\uc1\u8230\'85 Get you.}
+\par\plain {\f0\fs24\b0\i0 First, [download the latest version](}{\field{\*\fldinst HYPERLINK "http://downloads.vagrantup.com/"}{\fldrslt\f0\fs24\b0\i0 http://downloads.vagrantup.com/}}{\f0\fs24\b0\i0 ) from their downloads page. After that, resist trying to install it using Ubuntu Software Center, there is a [known issue](}{\field{\*\fldinst HYPERLINK "https://bugs.launchpad.net/ubuntu/+source/vagrant/+bug/1125097"}{\fldrslt\f0\fs24\b0\i0 https://bugs.launchpad.net/ubuntu/+source/vagrant/+bug/1125097}}{\f0\fs24\b0\i0 ) with how several things interact, with the summary being that installing Vagrant from Ubuntu Software Center will uninstall `virtualbox-4.2` if you have it installed.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ### How do we solve that?}
+\par\plain {\f0\fs24\b0\i0 Easy, actually. Rather than using `apt-get` to install the package and all its\hich\f0 \rquote \loch\f0  dependencies, use `dpkg -i <vagrant-file>` instead to install only the package, to hell with any of its\hich\f0 \rquote \loch\f0  dependencies. }
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ### Installing VirtualBox}
+\par\plain {\f0\fs24\b0\i0 If you didn\hich\f0 \rquote \loch\f0 t have VirtualBox, the best plan is to [go to Oracle\hich\f0 \rquote \loch\f0 s Download page](}{\field{\*\fldinst HYPERLINK "http://download.virtualbox.org/virtualbox/4.2.8/"}{\fldrslt\f0\fs24\b0\i0 http://download.virtualbox.org/virtualbox}}{\f0\fs24\b0\i0 ) and download the latest version of VirtualBox. After that, you can either double-click on it to open up Ubuntu Software Center, or run `dpkg -i <name-of-package`.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ## Usage}
+\par\plain {\f0\fs24\b0\i0 Vagrant\hich\f0 \rquote \loch\f0 s documentation is quite well written, with the [Quickstart](}{\field{\*\fldinst HYPERLINK "http://docs.vagrantup.com/v2/getting-started/"}{\fldrslt\f0\fs24\b0\i0 http://docs.vagrantup.com/v2/getting-started/}}{\f0\fs24\b0\i0 ) particularly useful, but here\hich\f0 \rquote \loch\f0 s some highlights:}
+\par\plain {\f0\fs24\b0\i0 * `vagrant init` \hich\f0 \emdash \loch\f0  Creates a `Vagrantfile` in the directory with basic settings. If called with a name and an url to a box, it will install that box, ex: `vagrant init precise32 http://files.vagrantup.com/precise32.box`, which creates a box called precise32.}
+\par\plain {\f0\fs24\b0\i0 * `vagrant up` \hich\f0 \emdash \loch\f0  Starts the machine based on the configurations in the `Vagrantfile`}
+\par\plain {\f0\fs24\b0\i0 * `vagrant ssh` \hich\f0 \emdash \loch\f0  Logs into the virtual machine using SSH}
+\par\plain {\f0\fs24\b0\i0 * `vagrant destroy` \hich\f0 \emdash \loch\f0  Tears down the machine and any changes done to it}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 Future installations in this serie will cover the configuration I use, but that requires I start by getting the configuration to work!}
+\par\plain \f0\fs24\b0\i0}

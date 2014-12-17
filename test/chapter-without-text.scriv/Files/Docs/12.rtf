@@ -1,0 +1,22 @@
+{\rtf1\ansi\ansicpg1252\uc1\deff0
+{\fonttbl{\f0\fnil\fcharset1252\fprq2 Source Code Pro;}}
+{\colortbl;\red0\green0\blue0;}
+\paperw12240\paperh15840\margl1800\margr1800\margt1440\margb1440\fet2\ftnbj\aenddoc
+\pgnrestart\pgnstarts0
+\pard\plain \fi720\ltrch\loch {\f0\fs24\b0\i0 ## Forking, remotes and pull-requests}
+\par\plain {\f0\fs24\b0\i0 This might be just me, but I don\hich\f0 \rquote \loch\f0 t contribute that much to open source, by far not as much as I really ought to. This leads to me every time I do end up contributing needing to remember how I update my fork from the original one.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 In the end of the day, it is actually fairly easy. Git allows for several `remotes`, IE sources to fetch changes from and/or (if you have the right permissions) to push to. The standard one, your local fork, is most often known as `origin`, though you can change the origin if necessary (I think that\hich\f0 \rquote \loch\f0 s a touch out of scope for this set of tips & tricks, however). So, without further ado, this is how you interact with the so-called `upstream` (that name isn\hich\f0 \rquote \loch\f0 t set in stone, but it\hich\f0 \rquote \loch\f0 s fairly well-known).}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain {\f0\fs24\b0\i0 # You can add more remotes by name and url}
+\par\plain {\f0\fs24\b0\i0 git remote add upstream git@github.com:<original author>/<repository name>.git}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 # Fetch changes from upstream, using fetch rather than pull to not merge in changes immediately}
+\par\plain {\f0\fs24\b0\i0 git fetch upstream}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 # Now that you\hich\f0 \rquote \loch\f0 ve established that you want to merge in the changes}
+\par\plain {\f0\fs24\b0\i0 git merge upstream/master}
+\par\plain {\f0\fs24\b0\i0 ~~~}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 Now you can do all the changes you want in your own local repository, push them to your github repository, and create a new pull request to the upstream repository. }}

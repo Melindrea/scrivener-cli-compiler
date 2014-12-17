@@ -1,0 +1,15 @@
+{\rtf1\ansi\ansicpg1252\uc1\deff0
+{\fonttbl{\f0\fnil\fcharset1252\fprq2 Courier New;}}
+{\colortbl;\red0\green0\blue0;\red0\green0\blue128;}
+\paperw12240\paperh15840\margl1800\margr1800\margt1440\margb1440\fet2\ftnbj\aenddoc
+\pgnrestart\pgnstarts0
+\pard\plain \fi720\ltrch\loch {\f0\fs24\b0\i0 ## Git hooks}
+\par\plain {\f0\fs24\b0\i0 There are several places in the git workflow that you can attach shell scripts, so-called hooks. The full list can be found in `.git/hooks`, where each available hook has a sample  script named by the hook and the extension `.sample`. Simply remove the extension and the hook will be active.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 If you create your own script, you need to make sure it\hich\f0 \rquote \loch\f0 s a valid shellscript, and that it has permission to be executed. I\hich\f0 \rquote \loch\f0 ve been tripped up by it changing the line endings on me, so if there\hich\f0 \rquote \loch\f0 s issues, `dos2unix` is always very helpful.}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 The only hook I really use at the moment is `pre-commit`, which runs right before the commit is finalized, meaning that if it fails, the commit will not go through. The one I use the most uses `grunt commit`, which runs the linting and testing tasks, and the script also uses parts of the default script:}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 [gist]}{\field{\*\fldinst HYPERLINK "https://gist.github.com/Melindrea/6724878#file-pre-commit-grunt"}{\fldrslt\f0\fs24\b0\i0 https://gist.github.com/Melindrea/6724878#file-pre-commit-grunt}}{\f0\fs24\b0\i0 [/gist]}
+\par\plain \f0\fs24\b0\i0
+\par\plain {\f0\fs24\b0\i0 I intend to gather a few more of the hooks, once I understand what exactly they do, and how to fit them into my workflow the best.}}

@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+var argv = require('yargs')
+    .usage('Usage: $0 -p [project]')
+    .demand(['p'])
+    .argv,
+    scrivenerConfig = require ('../scrivener'),
+    scrivener = require('../index'),
+    item = argv.p,
+    projectPath = __dirname + '/../' + scrivenerConfig[item].path + '/' + item + '.scriv',
+    draft = scrivener.load(projectPath, scrivenerConfig[item]);
+
+if (argv.dry) {
+    scrivener.write(draft, scrivenerConfig[item], true);
+} else {
+    scrivener.write(draft, scrivenerConfig[item]);
+}
+// console.log(draft);

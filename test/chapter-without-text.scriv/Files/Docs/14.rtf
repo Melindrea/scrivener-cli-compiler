@@ -1,0 +1,457 @@
+{\rtf1\ansi\ansicpg1252\uc1\deff0
+{\fonttbl{\f0\fnil\fcharset1252\fprq2 Sans Serif;}}
+{\colortbl;\red0\green0\blue0;}
+\paperw12240\paperh15840\margl1800\margr1800\margt1440\margb1440\fet2\ftnbj\aenddoc
+\pgnrestart\pgnstarts0
+\pard\plain \fi0\ltrch\loch {\f0\fs18 Contribute on GitHub}
+\par\plain {\f0\fs18 ABOUT}
+\par\plain {\f0\fs18 TUTORIALS}
+\par\plain {\f0\fs18 WORKSHOP KIT}
+\par\plain {\f0\fs18 CONTACT}
+\par\plain {\f0\fs18 DONATE}
+\par\plain {\f0\fs18 New Cder}
+\par\plain {\f0\fs18 five life jackets to throw to the new coder}
+\par\plain {\f0\fs18 SETTING UP YOUR COMPUTER}
+\par\plain {\f0\fs18 All the needed dependencies for setting up your Mac, Linux, or Windows machine for these tutorials.}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Overview}
+\par\plain {\f0\fs18 Install:}
+\par\plain {\f0\fs18 Mac OS X}
+\par\plain {\f0\fs18 Linux}
+\par\plain {\f0\fs18 Windows}
+\par\plain {\f0\fs18 Test your setup}
+\par\plain {\f0\fs18 Get the Tutorial Code}
+\par\plain {\f0\fs18 OVERVIEW OF REQUIREMENTS}
+\par\plain {\f0\fs18 The installation will depend on your operating system, but overall, you will need:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Python 2.x \endash  there are plans to update/include Python 3.x}
+\par\plain {\f0\fs18 git \endash  an intro given here}
+\par\plain {\f0\fs18 A C compiler}
+\par\plain {\f0\fs18 pip}
+\par\plain {\f0\fs18 virtualenv}
+\par\plain {\f0\fs18 virtualenvwrapper}
+\par\plain {\f0\fs18 MAC OS X}
+\par\plain {\f0\fs18 PYTHON}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Macs come with Python pre-installed. To check, open up the Terminal application (Applications \loch\af0\hich\af0\dbch\af0\uc1\u8594\'3F Utilities \u8594\'3F Terminal like so), then type python:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 2}
+\par\plain {\f0\fs18 3}
+\par\plain {\f0\fs18 4}
+\par\plain {\f0\fs18 5}
+\par\plain {\f0\fs18 $ python}
+\par\plain {\f0\fs18 Python 2.7.2 (default, Jun 20 2012, 16:23:33)}
+\par\plain {\f0\fs18 [GCC 4.2.1 Compatible Apple Clang 4.0 (tags/Apple/clang-418.0.60)] on darwin}
+\par\plain {\f0\fs18 Type "help", "copyright", "credits" or "license" for more information.}
+\par\plain {\f0\fs18 >>>}
+\par\plain {\f0\fs18 Python.org has a good Python on the Mac page if the above does not work for you.}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 GIT}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 You will need to install git on your machine through their download page. You can then follow the Save your Progress page to set it up.}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 C COMPILER}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 You will need the XCode application. Once you have XCode on your machine, you will need to navigate to Preferences \loch\af0\hich\af0\dbch\af0\uc1\u8594\'3F Downloads, then select Command Line Tools to download & install (this may take a while, get some coffee, go take a shower).}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 This gives you the GCC or the GNU Compiler Collection. To test installation, within the Terminal application, type gcc and you should get the following:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 2}
+\par\plain {\f0\fs18 $ gcc}
+\par\plain {\f0\fs18 i686-apple-darwin11-llvm-gcc-4.2: no input files}
+\par\plain {\f0\fs18 PIP}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 pip, stands for \hich\f0 \ldblquote \loch\f0 python install python\hich\f0 \rdblquote \loch\f0 , is a tool for installing and managing Python packages. Within your Terminal application, use the following commands (ignore the leading $ as that is your terminal prompt) for downloading & installing. It may prompt you for your computer login password.}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 2}
+\par\plain {\f0\fs18 3}
+\par\plain {\f0\fs18 4}
+\par\plain {\f0\fs18 5}
+\par\plain {\f0\fs18 $ sudo curl -O http://python-distribute.org/distribute_setup.py | python}
+\par\plain {\f0\fs18 $ sudo curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python}
+\par\plain {\f0\fs18 $ pip}
+\par\plain {\f0\fs18 Usage: pip COMMAND [OPTIONS]}
+\par\plain {\f0\fs18 You must give a command (use "pip help" to see a list of commands)}
+\par\plain {\f0\fs18 VIRTUALENV & VIRTUALENVWRAPPER}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 virtualenv creates isolated environments for each of your Python projects. It helps to solve version & dependency problems with multple Python installations and/or multiple versions of different Python packages. We\hich\f0 \rquote \loch\f0 ll use pip to install it:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 $ sudo pip install virtualenv}
+\par\plain {\f0\fs18 virtualenvwrapper is a great (but not required) tool for using virtualenv by simplifying the commands that virtualenv needs. We\hich\f0 \rquote \loch\f0 ll use pip again to install it:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 2}
+\par\plain {\f0\fs18 3}
+\par\plain {\f0\fs18 4}
+\par\plain {\f0\fs18 $ sudo pip install virtualenvwrapper}
+\par\plain {\f0\fs18 $ export WORKON_HOME=~/Envs}
+\par\plain {\f0\fs18 $ mkdir -p $WORKON_HOME}
+\par\plain {\f0\fs18 $ source /usr/local/bin/virtualenvwrapper.sh}
+\par\plain {\f0\fs18 LINUX}
+\par\plain {\f0\fs18 PYTHON}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Linux come with Python pre-installed. To check, open up the Terminal application, then type python:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 2}
+\par\plain {\f0\fs18 3}
+\par\plain {\f0\fs18 4}
+\par\plain {\f0\fs18 5}
+\par\plain {\f0\fs18 $ python}
+\par\plain {\f0\fs18 Python 2.7.3 (default, Aug  9 2012, 17:23:57)}
+\par\plain {\f0\fs18 [GCC 4.7.1 20120720 (Red Hat 4.7.1-5)] on linux2}
+\par\plain {\f0\fs18 Type "help", "copyright", "credits" or "license" for more information.}
+\par\plain {\f0\fs18 >>>}
+\par\plain {\f0\fs18 GIT}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 You will need to install git either from commands below or through their download page. You can then follow the Save your Progress page to set it up.}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Fedora: sudo yum install git}
+\par\plain {\f0\fs18 Ubuntu: sudo apt-get install git}
+\par\plain {\f0\fs18 C COMPILER}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 A C compiler, either GCC or clang, is needed because the numpy library we are using has some C extensions, which will need to be compiled.}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 To test if you have either GCC or clang, type $ gcc or $ clang into your terminal. If you get an error that says \hich\f0 \ldblquote \loch\f0 command not found\hich\f0 \rdblquote \loch\f0  then follow the install instructions:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Fedora:}
+\par\plain {\f0\fs18 sudo yum groupinstall "Developer Tools"}
+\par\plain {\f0\fs18 sudo yum install python-devel}
+\par\plain {\f0\fs18 Ubuntu:}
+\par\plain {\f0\fs18 you may need to run sudo apt-get update first.}
+\par\plain {\f0\fs18 sudo apt-get install build-essential python-dev libxml2-dev libxslt-dev}
+\par\plain {\f0\fs18 PIP}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 pip, stands for \hich\f0 \ldblquote \loch\f0 python install python\hich\f0 \rdblquote \loch\f0 , is a tool for installing and managing Python packages. Within your Terminal application, use the following commands (ignore the leading $ as that is your terminal prompt) for downloading & installing. It may prompt you for your computer login password.}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 2}
+\par\plain {\f0\fs18 3}
+\par\plain {\f0\fs18 4}
+\par\plain {\f0\fs18 5}
+\par\plain {\f0\fs18 $ sudo curl -O http://python-distribute.org/distribute_setup.py | python}
+\par\plain {\f0\fs18 $ sudo curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python}
+\par\plain {\f0\fs18 $ pip}
+\par\plain {\f0\fs18 Usage: pip COMMAND [OPTIONS]}
+\par\plain {\f0\fs18 You must give a command (use "pip help" to see a list of commands)}
+\par\plain {\f0\fs18 VIRTUALENV & VIRTUALENVWRAPPER}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 virtualenv creates isolated environments for each of your Python projects. It helps to solve version & dependency problems with multple Python installations and/or multiple versions of different Python packages. We\hich\f0 \rquote \loch\f0 ll use pip to install it:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 $ sudo pip install virtualenv}
+\par\plain {\f0\fs18 virtualenvwrapper is a great (but not required) tool for using virtualenv by simplifying the commands that virtualenv needs. We\hich\f0 \rquote \loch\f0 ll use pip again to install it:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 2}
+\par\plain {\f0\fs18 3}
+\par\plain {\f0\fs18 4}
+\par\plain {\f0\fs18 $ sudo pip install virtualenvwrapper}
+\par\plain {\f0\fs18 $ export WORKON_HOME=~/Envs}
+\par\plain {\f0\fs18 $ mkdir -p $WORKON_HOME}
+\par\plain {\f0\fs18 $ source /usr/local/bin/virtualenvwrapper.sh}
+\par\plain {\f0\fs18 WINDOWS}
+\par\plain {\f0\fs18 PYTHON}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Go here and click \hich\f0 \ldblquote \loch\f0 run\hich\f0 \rdblquote \loch\f0  if given the option. Otherwise, save it to your Desktop, then minimize windows to see your desktop, and double click on it to start the installer. Follow the installer instructions to completion.}
+\par\plain {\f0\fs18 Open a command prompt (we will be doing this multiple times, so make a note of how to do this!):}
+\par\plain {\f0\fs18 On Windows Vista or Windows 7: click on the Start menu (the Windows logo in the lower left of the screen), type cmd into the Search field directly above the Start menu button, and click on "cmd" in the search results above the Search field.}
+\par\plain {\f0\fs18 On Windows XP: click on the Start menu (the Windows logo in the lower left of the screen), click on "Run...", type cmd into the text box, and hit enter.}
+\par\plain {\f0\fs18 At this C:\\ prompt that appears, test your Python install by typing \\Python27\\python.exe and hitting enter. You should see something like}
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 2}
+\par\plain {\f0\fs18 3}
+\par\plain {\f0\fs18 Python 2.7.3 (r271:86832,...) on win32}
+\par\plain {\f0\fs18 Type "help", "copyright", "credits" or "license" for more information}
+\par\plain {\f0\fs18 >>>}
+\par\plain {\f0\fs18 You just started Python! The >>> indicates that you are at a new type of prompt \endash  a Python prompt. The command prompt lets you navigate your computer and run programs, and the Python prompt lets you write and run Python code interactively.}
+\par\plain {\f0\fs18 To exit the Python prompt, type exit() and press Enter. This will take you back to the Windows command prompt (the C:\\ you saw earlier).}
+\par\plain {\f0\fs18 Put Python on the PATH \endash  You might have noticed that you typed a "full path" to the Python application above when launching Python (python.exe is the application, but we typed \\Python27\\python.exe). In this step, you will configure your computer so that you can run Python without typing the ''Python27'' directory name.}
+\par\plain {\f0\fs18 Get to System Properties}
+\par\plain {\f0\fs18 Open up \hich\f0 \ldblquote \loch\f0 My Computer\hich\f0 \rdblquote \loch\f0  by clicking on the Start menu or the Windows logo in the lower-left hand corner, and navigate to "My Computer" (for Windows XP) or "Computer" (For Vista and Windows 7).}
+\par\plain {\f0\fs18 Right-click on the empty space in the window, and choose \hich\f0 \ldblquote \loch\f0 Properties\hich\f0 \rdblquote \loch\f0 .}
+\par\plain {\f0\fs18 If you\hich\f0 \rquote \loch\f0 re using XP: window labeled "System Properties" will pop up. Click the "Advanced" tab. A window with the title "System Properties" will appear.}
+\par\plain {\f0\fs18 If you\hich\f0 \rquote \loch\f0 re not using XP: A window labeled \hich\f0 \ldblquote \loch\f0 View basic information about your computer\hich\f0 \rdblquote \loch\f0  will appear. In this window, click "Advanced system settings". A window with the title "System Properties" will appear.}
+\par\plain {\f0\fs18 Edit the Path}
+\par\plain {\f0\fs18 Within System Properties, make sure you are in the tab labeled \hich\f0 \ldblquote \loch\f0 Advanced\hich\f0 \rquote \loch\f0 .}
+\par\plain {\f0\fs18 Click the button labeled \hich\f0 \ldblquote \loch\f0 Environment Variables\hich\f0 \rdblquote \loch\f0 . A window labeled "Environment Variables" will appear.}
+\par\plain {\f0\fs18 In this window, the screen is split between \hich\f0 \ldblquote \loch\f0 User variables\hich\f0 \rdblquote \loch\f0  and \hich\f0 \ldblquote \loch\f0 System variables\hich\f0 \rdblquote \loch\f0 . Within \hich\f0 \ldblquote \loch\f0 System variables\hich\f0 \rquote \loch\f0 , scroll down and find the one labeled \hich\f0 \ldblquote \loch\f0 Path\hich\f0 \rquote \loch\f0 . Click the \hich\f0 \ldblquote \loch\f0 Edit...\hich\f0 \rdblquote \loch\f0  button A window with the "Variable name" and the "Variable value" should appear. The \hich\f0 \ldblquote \loch\f0 Variable value\hich\f0 \rdblquote \loch\f0  will already have some text in it; click in the box to unhighlight it (we don't want to accidentally delete that text).}
+\par\plain {\f0\fs18 In the "Variable value" box, scroll to the end. Add the following text, and hit OK. Make sure to include the semicolon at the start! ;c:\\python27\\;c:\\python27\\scripts;c:\\python27\\tools\\scripts}
+\par\plain {\f0\fs18 Hit "OK" to close out the system properties window.}
+\par\plain {\f0\fs18 Test your change:}
+\par\plain {\f0\fs18 Open up a new command prompt: you do this the same way you did above when installing python. This needs to be a new command prompt because the changes you just made didn't take affect in prompts that were already open.}
+\par\plain {\f0\fs18 Type python into the command prompt to start Python}
+\par\plain {\f0\fs18 Notice that you now get a Python interpreter, indicated by the change to a >>> prompt.}
+\par\plain {\f0\fs18 Exit the Python prompt by typing exit() and hitting enter. Now you're back at the Windows command prompt (C:\\).}
+\par\plain {\f0\fs18 Success! You have installed Python!}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 GIT}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 Download git here. This installs git for Windows, as well as Msys, a Unix-like shell, that also includes a GCC compiler, MinGW.}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 PIP, VIRTUALENV + VIRTUALENVWRAPPER}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 You\hich\f0 \rquote \loch\f0 ll first need to install setuptools, and use ez_setup.py to run it. Download ez_setup.py and run it.}
+\par\plain {\f0\fs18 Once installation is complete, you will find an easy_install.exe program in your Python Scripts subdirectory. For simple invocation and best results, add this directory to your PATH environment variable, if it is not already present.}
+\par\plain {\f0\fs18 Next, run easy_install pip to install pip.}
+\par\plain {\f0\fs18 Open/run the Git Bash program. NOTE: Windows users: We will use this Git Bash program for whenever the \hich\f0 \ldblquote \loch\f0 terminal\hich\f0 \rdblquote \loch\f0 , \hich\f0 \ldblquote \loch\f0 shell\hich\f0 \rdblquote \loch\f0 , or \hich\f0 \ldblquote \loch\f0 command line\hich\f0 \rdblquote \loch\f0  is referred to.}
+\par\plain {\f0\fs18 Run the following command to install virtualenv:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 $ pip install virtualenv}
+\par\plain {\f0\fs18 or, if you get a permission error:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 $ sudo pip install virtualenv}
+\par\plain {\f0\fs18 Next, run the command to install virtualenvwrapper:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 $ pip install virtualenvwrapper}
+\par\plain {\f0\fs18 or, if you get a permission error:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 $ sudo pip install virtualenvwrapper}
+\par\plain {\f0\fs18 And now setup virtualenvwrapper:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 2}
+\par\plain {\f0\fs18 3}
+\par\plain {\f0\fs18 $ export WORKON_HOME=$HOME/.virtualenvs}
+\par\plain {\f0\fs18 $ export MSYS_HOME=/c/msys/1.0}
+\par\plain {\f0\fs18 $ source /usr/local/bin/virtualenvwrapper.sh}
+\par\plain {\f0\fs18 or,}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 2}
+\par\plain {\f0\fs18 3}
+\par\plain {\f0\fs18 $ export WORKON_HOME=$HOME/.virtualenvs}
+\par\plain {\f0\fs18 $ export MSYS_HOME=C:\\msys\\1.0}
+\par\plain {\f0\fs18 $ source /usr/local/bin/virtualenvwrapper.sh}
+\par\plain {\f0\fs18 TEST YOUR SETUP}
+\par\plain {\f0\fs18 Now let\hich\f0 \rquote \loch\f0 s test our installation and get familiar with creating & using virtual environments, let\hich\f0 \rquote \loch\f0 s return to our terminal:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18  1}
+\par\plain {\f0\fs18  2}
+\par\plain {\f0\fs18  3}
+\par\plain {\f0\fs18  4}
+\par\plain {\f0\fs18  5}
+\par\plain {\f0\fs18  6}
+\par\plain {\f0\fs18  7}
+\par\plain {\f0\fs18  8}
+\par\plain {\f0\fs18  9}
+\par\plain {\f0\fs18 10}
+\par\plain {\f0\fs18 11}
+\par\plain {\f0\fs18 $ mkvirtualenv TestEnv}
+\par\plain {\f0\fs18 Installing}
+\par\plain {\f0\fs18 distribute..........................................}
+\par\plain {\f0\fs18 ....................................................}
+\par\plain {\f0\fs18 ....................................................}
+\par\plain {\f0\fs18 ...............................done.}
+\par\plain {\f0\fs18 virtualenvwrapper.user_scripts Creating /Users/lynnroot/Envs/TestEnv/bin/predeactivate}
+\par\plain {\f0\fs18 virtualenvwrapper.user_scripts Creating /Users/lynnroot/Envs/TestEnv/bin/postdeactivate}
+\par\plain {\f0\fs18 virtualenvwrapper.user_scripts Creating /Users/lynnroot/Envs/TestEnv/bin/preactivate}
+\par\plain {\f0\fs18 virtualenvwrapper.user_scripts Creating /Users/lynnroot/Envs/TestEnv/bin/postactivate}
+\par\plain {\f0\fs18 virtualenvwrapper.user_scripts creating /Users/lynnroot/Envs/TestEnv/bin/get_env_details}
+\par\plain {\f0\fs18 Now that you made a virtual environment called TestEnv, you should see (TestEnv) before your prompt:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 (TestEnv) $}
+\par\plain {\f0\fs18 Let\hich\f0 \rquote \loch\f0 s play around with commands for virtualenv:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 2}
+\par\plain {\f0\fs18 3}
+\par\plain {\f0\fs18 4}
+\par\plain {\f0\fs18 5}
+\par\plain {\f0\fs18 6}
+\par\plain {\f0\fs18 # deactivate the TestEnv}
+\par\plain {\f0\fs18 (TestEnv) $ deactivate}
+\par\plain {\f0\fs18 $}
+\par\plain {\f0\fs18 # reactivate the TestEnv}
+\par\plain {\f0\fs18 $ workon TestEnv}
+\par\plain {\f0\fs18 (TestEnv) $}
+\par\plain {\f0\fs18 Next, we\hich\f0 \rquote \loch\f0 ll practice installing a package into the virtualenv:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18  1}
+\par\plain {\f0\fs18  2}
+\par\plain {\f0\fs18  3}
+\par\plain {\f0\fs18  4}
+\par\plain {\f0\fs18  5}
+\par\plain {\f0\fs18  6}
+\par\plain {\f0\fs18  7}
+\par\plain {\f0\fs18  8}
+\par\plain {\f0\fs18  9}
+\par\plain {\f0\fs18 10}
+\par\plain {\f0\fs18 11}
+\par\plain {\f0\fs18 # install the Django package in your TestEnv environment}
+\par\plain {\f0\fs18 (TestEnv) $ pip install django}
+\par\plain {\f0\fs18 Downloading/unpacking django}
+\par\plain {\f0\fs18   Downloading Django-1.1.1.tar.gz (5.6Mb): 5.6Mb downloaded}
+\par\plain {\f0\fs18   Running setup.py egg_info for package django}
+\par\plain {\f0\fs18 Installing collected packages: django}
+\par\plain {\f0\fs18   Running setup.py install for django}
+\par\plain {\f0\fs18     changing mode of build/scripts-2.6/django-admin.py from 644 to 755}
+\par\plain {\f0\fs18     changing mode of /Users/lynnroot/Envs/TestEnv/bin/django-admin.py to 755}
+\par\plain {\f0\fs18 Successfully installed django}
+\par\plain {\f0\fs18 (TestEnv) $}
+\par\plain {\f0\fs18  1}
+\par\plain {\f0\fs18  2}
+\par\plain {\f0\fs18  3}
+\par\plain {\f0\fs18  4}
+\par\plain {\f0\fs18  5}
+\par\plain {\f0\fs18  6}
+\par\plain {\f0\fs18  7}
+\par\plain {\f0\fs18  8}
+\par\plain {\f0\fs18  9}
+\par\plain {\f0\fs18 10}
+\par\plain {\f0\fs18 # test the installation of Django}
+\par\plain {\f0\fs18 (TestEnv) $ python}
+\par\plain {\f0\fs18 Python 2.7.2 (default, Jun 20 2012, 16:23:33)}
+\par\plain {\f0\fs18 [GCC 4.2.1 Compatible Apple Clang 4.0 (tags/Apple/clang-418.0.60)] on darwin}
+\par\plain {\f0\fs18 Type "help", "copyright", "credits" or "license" for more information.}
+\par\plain {\f0\fs18 >>> import django}
+\par\plain {\f0\fs18 >>> exit()}
+\par\plain {\f0\fs18 # deactivate the TestEnv virtual environment}
+\par\plain {\f0\fs18 (TestEnv) $ deactivate}
+\par\plain {\f0\fs18 $}
+\par\plain {\f0\fs18  1}
+\par\plain {\f0\fs18  2}
+\par\plain {\f0\fs18  3}
+\par\plain {\f0\fs18  4}
+\par\plain {\f0\fs18  5}
+\par\plain {\f0\fs18  6}
+\par\plain {\f0\fs18  7}
+\par\plain {\f0\fs18  8}
+\par\plain {\f0\fs18  9}
+\par\plain {\f0\fs18 10}
+\par\plain {\f0\fs18 11}
+\par\plain {\f0\fs18 12}
+\par\plain {\f0\fs18 # try to import Django again}
+\par\plain {\f0\fs18 # we should get an error because we deactivated the virtualenv}
+\par\plain {\f0\fs18 $ python}
+\par\plain {\f0\fs18 Python 2.7.2 (default, Jun 20 2012, 16:23:33)}
+\par\plain {\f0\fs18 [GCC 4.2.1 Compatible Apple Clang 4.0 (tags/Apple/clang-418.0.60)] on darwin}
+\par\plain {\f0\fs18 Type "help", "copyright", "credits" or "license" for more information.}
+\par\plain {\f0\fs18 >>> import django}
+\par\plain {\f0\fs18 Traceback (most recent call last):}
+\par\plain {\f0\fs18   File "<stdin>", line 1, in <module>}
+\par\plain {\f0\fs18 ImportError: No module named django}
+\par\plain {\f0\fs18 >>> exit()}
+\par\plain {\f0\fs18 $}
+\par\plain {\f0\fs18  1}
+\par\plain {\f0\fs18  2}
+\par\plain {\f0\fs18  3}
+\par\plain {\f0\fs18  4}
+\par\plain {\f0\fs18  5}
+\par\plain {\f0\fs18  6}
+\par\plain {\f0\fs18  7}
+\par\plain {\f0\fs18  8}
+\par\plain {\f0\fs18  9}
+\par\plain {\f0\fs18 10}
+\par\plain {\f0\fs18 11}
+\par\plain {\f0\fs18 # reactivate the TestEnv virtual environment}
+\par\plain {\f0\fs18 $ workon TestEnv}
+\par\plain {\f0\fs18 (TestEnv) $}
+\par\plain {\f0\fs18 # try again to import Django}
+\par\plain {\f0\fs18 (TestEnv) $ python}
+\par\plain {\f0\fs18 Python 2.7.2 (default, Jun 20 2012, 16:23:33)}
+\par\plain {\f0\fs18 [GCC 4.2.1 Compatible Apple Clang 4.0 (tags/Apple/clang-418.0.60)] on darwin}
+\par\plain {\f0\fs18 Type "help", "copyright", "credits" or "license" for more information.}
+\par\plain {\f0\fs18 >>> import django}
+\par\plain {\f0\fs18 >>> exit()}
+\par\plain {\f0\fs18 (TestEnv) $}
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 2}
+\par\plain {\f0\fs18 3}
+\par\plain {\f0\fs18 4}
+\par\plain {\f0\fs18 # see what libraries are installed in the TestEnv virtual environment:}
+\par\plain {\f0\fs18 (TestEnv) $ pip freeze}
+\par\plain {\f0\fs18 django==1.5}
+\par\plain {\f0\fs18 (TestEnv) $}
+\par\plain {\f0\fs18 Here\hich\f0 \rquote \loch\f0 s a run-down of useful commands for pip, virtualenv & virtualenvwrapper.}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 mkvirtualenv [ENV_NAME] \endash  creates and activates a fresh virtual environment}
+\par\plain {\f0\fs18 workon [ENV_NAME] \endash  activates an already-created virtual environment}
+\par\plain {\f0\fs18 deactivate \endash  deactivates the virtual environment that is currently active}
+\par\plain {\f0\fs18 within an activated virtualenv, pip install [PACKAGE_NAME] installs a package into the virtualenv}
+\par\plain {\f0\fs18 within an activated virtualenv, pip freeze lists the packages that is installed & accessible within the virtualenv}
+\par\plain {\f0\fs18 GET THE TUTORIAL CODE}
+\par\plain {\f0\fs18 Within your terminal:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 To get to your \hich\f0 \ldblquote \loch\f0 Home\hich\f0 \rdblquote \loch\f0  directory:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 $ cd}
+\par\plain {\f0\fs18 To create a new Projects folder and move to that directory. You can name it whatever you want, just remember what you named it, and where it is:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 2}
+\par\plain {\f0\fs18 $ mkdir Projects}
+\par\plain {\f0\fs18 $ cd Projects}
+\par\plain {\f0\fs18 Clone the New Coder project into the directory you\hich\f0 \rquote \loch\f0 re currently in, which is Projects (unless you named it something else):}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 1}
+\par\plain {\f0\fs18 $ git clone https://github.com/econchick/new-coder.git}
+\par\plain {\f0\fs18 When you clone a repo with the above command, git creates a directory. Here, git created the new-coder directory within our Projects directory. If you were to open up your file browser (e.g. Finder in Mac), the file hierarchy would look like the following:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18  1}
+\par\plain {\f0\fs18  2}
+\par\plain {\f0\fs18  3}
+\par\plain {\f0\fs18  4}
+\par\plain {\f0\fs18  5}
+\par\plain {\f0\fs18  6}
+\par\plain {\f0\fs18  7}
+\par\plain {\f0\fs18  8}
+\par\plain {\f0\fs18  9}
+\par\plain {\f0\fs18 10}
+\par\plain {\f0\fs18 11}
+\par\plain {\f0\fs18 12}
+\par\plain {\f0\fs18 .}
+\par\plain {\f0\fs18 \loch\af0\hich\af0\dbch\af0\uc1\u9492\'3F\u9472\'3F\u9472\'3F Projects/}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F AUTHORS.md}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F CONTRIBUTING.md}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F LICENSE}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F README.md}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F apis/     # sample code for tutorial #2}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F dataviz/  # sample code for tutorial #1}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F gui/      # sample code for tutorial #5}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F network/  # sample code for tutorial #4}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F scrape/   # sample code for tutorial #3}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9492\'3F\u9472\'3F\u9472\'3F website/  # files that make newcoder.io}
+\par\plain {\f0\fs18 When you work through each project, make a new directory within Projects to keep your code away from the sample code. For example:}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18  1}
+\par\plain {\f0\fs18  2}
+\par\plain {\f0\fs18  3}
+\par\plain {\f0\fs18  4}
+\par\plain {\f0\fs18  5}
+\par\plain {\f0\fs18  6}
+\par\plain {\f0\fs18  7}
+\par\plain {\f0\fs18  8}
+\par\plain {\f0\fs18  9}
+\par\plain {\f0\fs18 10}
+\par\plain {\f0\fs18 11}
+\par\plain {\f0\fs18 12}
+\par\plain {\f0\fs18 13}
+\par\plain {\f0\fs18 14}
+\par\plain {\f0\fs18 .}
+\par\plain {\f0\fs18 \loch\af0\hich\af0\dbch\af0\uc1\u9492\'3F\u9472\'3F\u9472\'3F Projects/}
+\par\plain {\f0\fs18     # <-- snip -->}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F apis/     # sample code for tutorial #2}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F apis_workspace/ # your code for tutorial #2}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F dataviz/  # sample code for tutorial #1}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F dataviz_workspace/ # your code for tutorial #1}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F gui/      # sample code for tutorial #5}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F gui_workspace/ # your code for tutorial #5}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F network/  # sample code for tutorial #4}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F network_workspace/ # your code for tutorial #4}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F scrape/   # sample code for tutorial #3}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9500\'3F\u9472\'3F\u9472\'3F scrape_workspace/ # your code for tutorial #3}
+\par\plain {\f0\fs18     \loch\af0\hich\af0\dbch\af0\uc1\u9492\'3F\u9472\'3F\u9472\'3F website/  # files that make newcoder.io}
+\par\plain {\f0\fs18 You\hich\f0 \rquote \loch\f0 re good to go with your setup! Go start on dataviz!}
+\par\plain \f0\fs18
+\par\plain {\f0\fs18 THE WRITTEN TUTORIALS ARE LICENSED UNDER A CREATIVE COMMONS ATTRIBUTION-SHAREALIKE 3.0 UNPORTED LICENSE. POWERED BY MYNT}}
