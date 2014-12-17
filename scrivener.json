@@ -2,8 +2,12 @@
     "chapter-without-text": {
         "depth": 2,
         "path": "test",
+        "compilePath": "build",
+        "ext": "hbs",
         "levels": [{
-            "text": false
+            "text": false,
+            "slug": "chapter"
+
         }, {
             "text": true,
             "title": false,

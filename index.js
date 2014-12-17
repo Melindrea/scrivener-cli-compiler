@@ -26,10 +26,7 @@ module.exports = {
     },
 
     write: function (draft, config, dry) {
-        draft.forEach(function (item) {
-            // console.log(item);
-            console.log(item.parent);
-        });
+
     }
 };
 
