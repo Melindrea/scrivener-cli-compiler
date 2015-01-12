@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/Melindrea/scrivener-cli-compiler",
   "dependencies": {
+    "execSync": "^1.0.2",
     "pdc": "^0.2.2",
     "plasma": "^0.6.1",
     "template": "^0.6.1",

@@ -8,6 +8,7 @@ This has a few (completelly non-working!) Scrivener projects, with the
 minimum amount of files required to test whatever needs to be tested
 
 ### Chapter without text
+`./bin/scrivener-cli-compiler -p chapter-without-text [--dry]`
 
 ```
 {

@@ -14,4 +14,3 @@ if (argv.dry) {
 } else {
     scrivener.write(draft, scrivenerConfig[item]);
 }
-// console.log(draft);
