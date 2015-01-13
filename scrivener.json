@@ -9,10 +9,7 @@
             "slug": "chapter"
 
         }, {
-            "text": true,
-            "title": false,
-            "concat": true,
-            "divider": "SCENE ENDS"
+            "text": true
         }]
     }
 }

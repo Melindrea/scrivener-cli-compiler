@@ -6,11 +6,13 @@ var argv = require('yargs')
     scrivenerConfig = require ('../scrivener'),
     scrivener = require('../index'),
     item = argv.p,
+    type = (argv.type !== undefined) ? argv.type : false,
     projectPath = __dirname + '/../' + scrivenerConfig[item].path + '/' + item + '.scriv',
-    draft = scrivener.load(projectPath, scrivenerConfig[item]);
+    buildPath = __dirname + '/../' + scrivenerConfig[item].compilePath + '/',
+    draft = scrivener.loadDraft(projectPath, scrivenerConfig[item], type);
 
 if (argv.dry) {
-    scrivener.write(draft, scrivenerConfig[item], true);
+    scrivener.write(draft, scrivenerConfig[item], buildPath, true);
 } else {
-    scrivener.write(draft, scrivenerConfig[item]);
+    scrivener.write(draft, scrivenerConfig[item], buildPath);
 }

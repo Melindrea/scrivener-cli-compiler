@@ -12,12 +12,15 @@ var xmldoc = require('xmldoc'), fs = require('fs'),
  * @return {Object}
  */
 module.exports = {
-    load: function (path, config) {
-        var scrivxPath = path + '/project.scrivx', projectScrivx, draft = [];
+    loadProject: function (path, config) {
+        return ScrivenerParser.getProject(path, config);
+    },
+
+    loadDraft: function (path, config, type) {
+        var draft = [];
 
         try {
-            projectScrivx = new xmldoc.XmlDocument(fs.readFileSync(scrivxPath, 'utf-8')),
-            draft = ScrivenerParser.getDraft(projectScrivx, config, path);
+            draft = ScrivenerParser.getDraft(ScrivenerParser.getProject(path, config), config, path);
         } catch (error) {
             throw error;
         }
@@ -25,13 +28,54 @@ module.exports = {
         return draft;
     },
 
-    write: function (draft, config, dry) {
-        // console.log(draft);
+    write: function (draft, config, path, dry) {
+        var files = [], currentFile = false, fileId = 1;
+
+        draft.forEach(function (item) {
+            var itemConfig = config.levels[item.depth], currentContent;
+            if ('slug' in itemConfig) {
+                if (currentFile) {
+                    files.push(currentFile);
+                    fileId++;
+                }
+                currentFile = {
+                    name: itemConfig.slug + '-' + fileId + '.' + config.ext
+                };
+            }
+
+            if (itemConfig.text) {
+                currentContent = (currentFile.content === undefined) ? '' : '#';
+                currentFile.content = currentContent + item.text;
+            }
+        });
+
+        files.push(currentFile);
+        fs.mkdir(path);
+        files.forEach(function (file) {
+            var fileName = path + file.name;
+            fs.writeFile(fileName, file.content, function (err) {
+                if (err) {
+                    return console.log(err);
+                }
+            });
+        });
     }
 };
 
 var ScrivenerParser = (function () {
     var parsedBinder = [];
+    function getProject(path, config) {
+        var scrivxPath = path + '/project.scrivx', projectScrivx;
+
+        try {
+            projectScrivx = new xmldoc.XmlDocument(fs.readFileSync(scrivxPath, 'utf-8'));
+        } catch (error) {
+            throw error;
+        }
+
+        return projectScrivx;
+    }
+
     // [todo] - Needs to also be able to read in Front Matter and Back Matter
     function parseBinder(scrivx, config, projectPath) {
         var binder = scrivx.descendantWithPath('Binder').childWithAttribute('Type', 'DraftFolder').childNamed('Children');
@@ -40,6 +84,7 @@ var ScrivenerParser = (function () {
         mapWithParent(parsedBinder);
 
         parsedBinder = parsedBinder.filter(function (item) {
+            var tmpPath;
             // This is deeper than wanted
             if (item.depth >= config.depth) {
                 return false;
@@ -55,8 +100,6 @@ var ScrivenerParser = (function () {
                     'soffice --headless --convert-to html:HTML --outdir ' +
                     '/tmp ' + item.filePath
                 );
-
-                item.content = sh.exec('pandoc /tmp/' + item.docId + '.html  -t markdown').stdout;
             } catch (err) {
                 console.error(err.stack)
                 if (err.pid) {
@@ -67,6 +110,13 @@ var ScrivenerParser = (function () {
                         err.status
                     );
                 }
+            }
+            try {
+                tmpPath = '/tmp/' + item.docId + '.html';
+                fs.readFileSync(tmpPath);
+                item.text = sh.exec('pandoc ' + tmpPath + ' -t markdown').stdout;
+            } catch (err) {
+                return false;
             }
 
             try {
@@ -125,7 +175,8 @@ var ScrivenerParser = (function () {
     }
 
     return {
-        getDraft: parseBinder
+        getDraft: parseBinder,
+        getProject: getProject
     }
 }());
 
