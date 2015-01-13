@@ -2,7 +2,9 @@
 
 var xmldoc = require('xmldoc'), fs = require('fs'),
     util = require('util'),
-    _s = require('underscore.string'), sh = require('execSync');
+    _s = require('underscore.string'),
+    sh = require('execSync'),
+    Template = require('template'), template = new Template();
 
 /**
  * Load Scrivener project, returning the Draft as an object
@@ -39,24 +41,36 @@ module.exports = {
                     fileId++;
                 }
                 currentFile = {
-                    name: itemConfig.slug + '-' + fileId + '.' + config.ext
+                    name: itemConfig.slug + '-' + fileId + '.' + config.ext,
+                    content: null
                 };
             }
 
             if (itemConfig.text) {
-                currentContent = (currentFile.content === undefined) ? '' : '#';
-                currentFile.content = currentContent + item.text;
+                currentContent = currentFile.content || '';
+
+                template.render(itemConfig.template, item, function (err, html) {
+                    if (err) {
+                        throw err;
+                    }
+                    currentFile.content = currentContent + html;
+                });
             }
         });
 
         files.push(currentFile);
-        fs.mkdir(path);
+        try {
+            fs.mkdir(path);
+        } catch (e) {}
+
         files.forEach(function (file) {
             var fileName = path + file.name;
-            fs.writeFile(fileName, file.content, function (err) {
+            template.render(config.template, file, function (err, html) {
                 if (err) {
-                    return console.log(err);
+                    throw err;
                 }
+
+                fs.writeFile(fileName, html);
             });
         });
     }
@@ -122,7 +136,7 @@ var ScrivenerParser = (function () {
             try {
                 item.synopsis = fs.readFileSync(item.synopsisPath).toString();
             } catch (err) {
-                item.synopsis = false;
+                item.synopsis = null;
             }
 
             return true;

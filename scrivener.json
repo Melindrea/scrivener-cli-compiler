@@ -4,12 +4,14 @@
         "path": "test",
         "compilePath": "build",
         "ext": "hbs",
+        "template": "{#markdown}<%= content %>{/markdown}",
         "levels": [{
             "text": false,
-            "slug": "chapter"
-
+            "slug": "chapter",
+            "template": "{{chapter <%= synopsis %>}} <%= text %>"
         }, {
-            "text": true
+            "text": true,
+            "template": "<%= text %>"
         }]
     }
 }
