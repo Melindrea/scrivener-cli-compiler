@@ -61,7 +61,9 @@ module.exports = {
         files.push(currentFile);
         try {
             fs.mkdir(path);
-        } catch (e) {}
+        } catch (e) {
+            throw e;
+        }
 
         files.forEach(function (file) {
             var fileName = path + file.name;
@@ -69,8 +71,11 @@ module.exports = {
                 if (err) {
                     throw err;
                 }
-
-                fs.writeFile(fileName, html);
+                try {
+                    fs.writeFile(fileName, html);
+                } catch (e) {
+                    throw e;
+                }
             });
         });
     }
