@@ -3,6 +3,7 @@
         "authorTemplate": "<%= last_name %>, <%= first_name %>"
     },
     "chapter-without-text": {
+        "configFile": "chapter-without-text.json",
         "depth": 2,
         "path": "test",
         "compilePath": "build",

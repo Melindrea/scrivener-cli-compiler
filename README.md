@@ -67,8 +67,8 @@ minimum amount of files required to test whatever needs to be tested
         // should be nested in navigation
         "body": [
             {
-                "name": "akt-01",
-                "items": [
+                "name": "akt-01", // Detta blir andra sluggen
+                "items": [ // Children
                     {
                         "name": "kapitel-01",
                         "title": "Kapitel 1"
@@ -98,7 +98,7 @@ minimum amount of files required to test whatever needs to be tested
                         "title": "Kapitel 5"
                     }
                 ],
-                "title": "Akt I: Konsten att F\u00f6rf\u00f6ra"
+                "title": "Akt I: Konsten att F\u00f6rf\u00f6ra" // Title
             },
             {
                 "name": "akt-02",
