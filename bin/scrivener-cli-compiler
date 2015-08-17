@@ -1,18 +1,37 @@
 #!/usr/bin/env node
-var argv = require('yargs')
-    .usage('Usage: $0 -p [project]')
-    .demand(['p'])
-    .argv,
-    scrivenerConfig = require ('../scrivener'),
-    scrivener = require('../index'),
-    item = argv.p,
-    type = (argv.type !== undefined) ? argv.type : false,
-    projectPath = __dirname + '/../' + scrivenerConfig[item].path + '/' + item + '.scriv',
-    buildPath = __dirname + '/../' + scrivenerConfig[item].compilePath + '/',
-    draft = scrivener.loadDraft(projectPath, scrivenerConfig[item], type);
+// var argv = require('yargs')
+//     .usage('Usage: $0 -p [project]')
+//     .demand(['p'])
+//     .argv,
+//     scrivenerConfig = require ('../scrivener'),
+//     scrivener = require('../index'),
+//     item = argv.p,
+//     type = argv.type || false,
+//     projectPath = __dirname + '/../' + scrivenerConfig[item].path + '/' + item + '.scriv',
+//     buildPath = __dirname + '/../' + scrivenerConfig[item].compilePath + '/',
+//     draft = scrivener.loadDraft(projectPath, scrivenerConfig[item], type);
 
-if (argv.dry) {
-    scrivener.write(draft, scrivenerConfig[item], buildPath, true);
-} else {
-    scrivener.write(draft, scrivenerConfig[item], buildPath);
+// if (argv.dry) {
+//     scrivener.write(draft, scrivenerConfig[item], buildPath, true);
+// } else {
+//     scrivener.write(draft, scrivenerConfig[item], buildPath);
+// }
+
+// var test = 'Jade slid the rusty safety chain on the front door and powered up the laptop.\n\nShe’d find the reasons for Jerry’s recent twitchiness, his quietness, lack of eye contact, angry lovemaking. "It’s not OK to love Call of Duty more than me!"\n\nThe Search Conduit virus infected the machine, uninvited pop-ups effervescent as she crept and crawled through his browsing history, anything but silently.\n\nShe’d take a quick look and *then* **disappear**,  ***deleting*** any trace of her presence, still unsure if mutual betrayal could be CntrlAltDeleted.\n\nA push at the door and the safety chain shattered…\nJerry.\nWith AK47.';
+var sh = require('execSync'),
+    test = sh.exec('pandoc test.html -t markdown').stdout;
+    // console.log(test);
+wordcount(test);
+function wordcount(text)
+{
+    text = text.replace(/—/g, ' ').replace(/…/g, ' ').replace(/  /g, '');
+    var lines = (text.match(/\n/g) || '').length,
+        words = (text.split(/\s+/) || ' ').length - 1,
+        chars = text.length;
+    console.log(lines, words, chars);
 }
+
+
+
+
+console.log(DocumentStatistics.statistics(test));

@@ -31,58 +31,67 @@ module.exports = {
     },
 
     write: function (draft, config, path, dry) {
-        var files = [], currentFile = false, fileId = 1;
+        // console.log(draft);
+        // var files = [], currentFile = false, fileId = 1;
 
-        draft.forEach(function (item) {
-            var itemConfig = config.levels[item.depth], currentContent;
-            if ('slug' in itemConfig) {
-                if (currentFile) {
-                    files.push(currentFile);
-                    fileId++;
-                }
-                currentFile = {
-                    name: itemConfig.slug + '-' + fileId + '.' + config.ext,
-                    content: null
-                };
-            }
+        // draft.forEach(function (item) {
+        //     var itemConfig = config.levels[item.depth], currentContent;
+        //     if ('slug' in itemConfig) {
+        //         if (currentFile) {
+        //             files.push(currentFile);
+        //             fileId++;
+        //         }
+        //         currentFile = {
+        //             name: itemConfig.slug + '-' + fileId + '.' + config.ext,
+        //             content: null
+        //         };
+        //     }
 
-            if (itemConfig.text) {
-                currentContent = currentFile.content || '';
+        //     if (itemConfig.text) {
+        //         currentContent = currentFile.content || '';
 
-                template.render(itemConfig.template, item, function (err, html) {
-                    if (err) {
-                        throw err;
-                    }
-                    currentFile.content = currentContent + html;
-                });
-            }
-        });
+        //         template.render(itemConfig.template, item, function (err, html) {
+        //             if (err) {
+        //                 throw err;
+        //             }
+        //             currentFile.content = currentContent + html;
+        //         });
+        //     }
+        // });
 
-        files.push(currentFile);
-        try {
-            fs.mkdir(path);
-        } catch (e) {
-            throw e;
-        }
+        // files.push(currentFile);
+        // try {
+        //     fs.mkdir(path);
+        // } catch (e) {
+        //     throw e;
+        // }
 
-        files.forEach(function (file) {
-            var fileName = path + file.name;
-            template.render(config.template, file, function (err, html) {
-                if (err) {
-                    throw err;
-                }
-                try {
-                    fs.writeFile(fileName, html);
-                } catch (e) {
-                    throw e;
-                }
-            });
-        });
+        // files.forEach(function (file) {
+        //     var fileName = path + file.name;
+        //     template.render(config.template, file, function (err, html) {
+        //         if (err) {
+        //             throw err;
+        //         }
+        //         try {
+        //             fs.writeFile(fileName, html);
+        //         } catch (e) {
+        //             throw e;
+        //         }
+        //     });
+        // });
+    },
+
+    statistics: function (text, wpp) {
+        return {
+            wordcount = DocumentStatistics.wordcount(text),
+            pagecount = DocumentStatistics.pagecount(text, wpp),
+        };
     }
 };
 
 var ScrivenerParser = (function () {
-    var parsedBinder = [];
+    var parsedBinder = [],
+        outline = [];
     function getProject(path, config) {
         var scrivxPath = path + '/project.scrivx', projectScrivx;
 
@@ -97,7 +106,9 @@ var ScrivenerParser = (function () {
 
     // [todo] - Needs to also be able to read in Front Matter and Back Matter
     function parseBinder(scrivx, config, projectPath) {
-        var binder = scrivx.descendantWithPath('Binder').childWithAttribute('Type', 'DraftFolder').childNamed('Children');
+        var binder = scrivx.descendantWithPath('Binder').childWithAttribute('Type', 'DraftFolder').childNamed('Children'),
+            fluff = parseDraft(binder);
+
         binder.eachChild(parseItem);
 
         mapWithParent(parsedBinder);
@@ -133,13 +144,13 @@ var ScrivenerParser = (function () {
             try {
                 tmpPath = '/tmp/' + item.docId + '.html';
                 fs.readFileSync(tmpPath);
-                item.text = sh.exec('pandoc ' + tmpPath + ' -t markdown').stdout;
+                // item.text = sh.exec('pandoc ' + tmpPath + ' -t markdown').stdout;
             } catch (err) {
                 return false;
             }
 
             try {
-                item.synopsis = fs.readFileSync(item.synopsisPath).toString();
+                // item.synopsis = fs.readFileSync(item.synopsisPath).toString();
             } catch (err) {
                 item.synopsis = null;
             }
@@ -148,6 +159,18 @@ var ScrivenerParser = (function () {
         });
 
         return parsedBinder;
+    }
+
+    function parseDraft(binder) {
+        var draft = [];
+        // console.log(binder.children.length);
+        binder.eachChild(function (item, index, context) {
+            var object = {};
+
+            object.title = item.valueWithPath('Title');
+
+        });
+        return draft;
     }
 
     var stackLevel = 0;
@@ -196,6 +219,49 @@ var ScrivenerParser = (function () {
     return {
         getDraft: parseBinder,
         getProject: getProject
+    }
+}());
+
+var DocumentStatistics = (function () {
+    function wordcount(text) {
+        text = cleanText(text);
+        return (text.split(/\s+/) || ' ').length - 1;
+    }
+
+    function pagecount(text, wpp) {
+        var wc = wordcount(text);
+
+        wpp = wpp || 350;
+        return Math.ceil(wc/wpp);
+    }
+
+    function linecount(text) {
+        return (text.match(/\n/g) || '').length;
+    }
+
+    function charcount(text) {
+        return text.replace(/  /g, '').trim().length;
+    }
+
+    function cleanText(text) {
+        return text.replace(/—/g, ' ').replace(/…/g, ' ').replace(/  /g, '');
+    }
+
+    function statistics(text, wpp) {
+        return {
+            wordcount: wordcount(text),
+            pagecount: pagecount(text, wpp),
+            linecount: linecount(text),
+            charcount: charcount(text)
+        };
+    }
+
+    return {
+        wordcount: wordcount,
+        pagecount: pagecount,
+        linecount: linecount,
+        charcount: charcount,
+        statistics: statistics
     }
 }());
 
